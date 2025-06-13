@@ -1,0 +1,70 @@
+{
+    "name": "@tspro/brace-format",
+    "version": "3.0.0",
+    "author": "Stefan++ Software Studio",
+    "private": false,
+    "license": "zlib",
+    "description": "BraceFormat TS/JS String Formatter",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.mjs",
+    "browser": "dist/index.umd.min.js",
+    "unpkg": "dist/index.umd.min.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./dist/index.cjs.js",
+            "import": "./dist/index.esm.mjs",
+            "browser": "./dist/index.umd.min.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "dependencies": {
+        "jsbi": "^4.3.2"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.27.2",
+        "@babel/core": "^7.27.1",
+        "@babel/preset-env": "^7.27.2",
+        "@microsoft/api-extractor": "^7.52.8",
+        "@types/jasmine": "^5.1.8",
+        "@webpack-cli/serve": "^3.0.1",
+        "api-extractor": "^99.99.99",
+        "babel-loader": "^10.0.0",
+        "benchmark": "^2.1.4",
+        "clean-webpack-plugin": "^4.0.0",
+        "jasmine": "^5.7.1",
+        "karma": "^6.4.4",
+        "karma-chrome-launcher": "^3.2.0",
+        "karma-cli": "^2.0.0",
+        "karma-jasmine": "^5.1.0",
+        "karma-sourcemap-loader": "^0.4.0",
+        "karma-webpack": "^5.0.1",
+        "npm-watch": "^0.13.0",
+        "rimraf": "^6.0.1",
+        "terser-webpack-plugin": "^5.3.14",
+        "ts-loader": "^9.5.2",
+        "typescript": "^5.8.3",
+        "webpack": "^5.99.8",
+        "webpack-cli": "^6.0.1",
+        "webpack-dev-server": "^5.2.1"
+    },
+    "watch": {
+        "build:dev": {
+            "patterns": [
+                "src"
+            ],
+            "extensions": "ts",
+            "quiet": false
+        }
+    },
+    "scripts": {
+        "build:dev": "rimraf dist && webpack --mode development && api-extractor run --local && rimraf dist/temp-types",
+        "build:prod": "rimraf dist && webpack --mode production && api-extractor run --local && rimraf dist/temp-types",
+        "watch": "npm-watch build:dev",
+        "test": "karma start",
+        "benchmark": "npm run build:prod && node benchmarks/benchmark.mjs"
+    },
+    "browserslist": [
+        "defaults"
+    ]
+}
