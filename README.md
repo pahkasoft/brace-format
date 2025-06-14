@@ -67,7 +67,7 @@ Now available via the unpkg CDN. Use with version @3.
     <script src="https://unpkg.com/@tspro/brace-format@3"></script>
     
     <script>
-        var format = BraceFormat.format;
+        var format = window.BraceFormat.format;
         format("...");
     </script>
 
