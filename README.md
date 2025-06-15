@@ -130,11 +130,11 @@ Replacement field is enclosed in braces '{}' and consists of parts separated by 
 - Parts between (arr_1...arr_N) are array presentations.
 - Any part can be empty string.
 
-Format specification for element:
+Element presentation: format specification for element:
 
     [[fill]<^>=][+- ][z][#][0][width][,_][.precision][L][scdnbBoxXeEfF%gGaA]
 
-Format specification for array (and set, map, object):
+Array presentation: format specification for array, set, map and object:
 
     [[fill]<^>][width][dbnms]
 
