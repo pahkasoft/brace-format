@@ -120,23 +120,104 @@ Locale affects decimal and grouping separators when using the "n" or "L" specifi
     }
 
 ## String Formatting
-
 Replacement field is enclosed in braces '{}' and consists of parts separated by ':'.
 
-    {field_num:arr_1:arr_2:arr_N:elem}
+    {field_id:elem}
+    {field_id:arr_1:arr_2:arr_N:elem}
 
-- First part (field_num) is field number.
-- Last part (elem) is element presentation.
-- Parts between (arr_1...arr_N) are array presentations.
+- First part (field_id) is field number/id.
+- Last part (elem) is **element presentation**.
+- Parts between (arr_1...arr_N) are **array presentations**.
 - Any part can be empty string.
 
-Element presentation: format specification for element:
+### Element presentation
+Format specification for element:
 
-    [[fill]<^>=][+- ][z][#][0][width][,_][.precision][L][scdnbBoxXeEfF%gGaA]
+    [[fill]align][sign]["z"]["#"]["0"][width][grouping]["." precision]["L"][type]
 
-Array presentation: format specification for array, set, map and object:
+#### fill
+Fill can be any single codepoint character.
 
-    [[fill]<^>][width][dbnms]
+#### align
+* "<" Forces the field to be left-aligned within field width.
+* "^" Forces the field to be centered within field width.
+* ">" Forces the field to be right-aligned within field width.
+* "=" Forces the padding to be placed after the sign (if any) but before the digits.
+
+#### sign
+* "+" Use sign for both positive and negative numbers.
+* "-" Use sign only for negative numbers.
+* " " Use leading space for positive numbers, and minus sign for negative numbers.
+
+#### "z"
+Force negative zero to positive zero for floating point types.
+
+#### "#"
+Use alternate form. For integers add "0b", "0B", "0o", "0x", "0X" prefix to the result. For floats always include decimal point character. For "g" and "G" types trailing zeroes are not removed.
+
+#### "0"
+Preceding the width field by "0" character enables sign-aware zero-padding for numeric types. This is same as using a fill character of "0" with an alignment type of "=".
+
+#### width
+Positive integer or nested field {field_id} specifying width of field.
+
+#### grouping
+Specifies digit group separator for numeric types.
+* "," Insert comma every 3 digits for decimal and floating points types.
+* "_" Insert underscore every 3 digits for decimal and floating point types. For binary, octal and hex types, insert underscore every 4 digits.
+
+#### precision
+Positive integer or nested field {field_id}. For floating point types specifies the precision. For string types specifies how many characters will be used from the field content.
+
+#### "L"
+The L option causes the locale-specific form to be used.
+
+#### type
+* "" (omitted) Default format.
+* "s" String format.
+* "c" Character format. Convert integer to unicode character.
+* "d" Decimal integer format.
+* "n" Same as "d" but use digit group separators from to locale settings.
+* "b" | "B" Binary format.
+* "o" Octal format.
+* "x" | "X" Hexadecimal format.
+* "e" | "E" Scientific floating point format.
+* "f" | "F" Fixed floating point format.
+* "%" Percent notation: same as fixed but multiplied by 100.
+* "g" | "G" General floating point format.
+* "a" | "A" Normalised hexadecimal exponential format.
+
+### Array presentation
+Format specification for array, set, map and object:
+
+    [[fill]align][width][type]
+
+#### fill
+Fill can be any single codepoint character.
+
+#### align
+* "<" Forces the field to be left aligned within field width.
+* "^" Forces the field to be centered within field width.
+* ">" Forces the field to be right aligned within field width.
+
+#### width
+Positive integer or nested field {field_id} specifying width of field.
+
+#### type
+* "" | "d" Default format.  
+    For array/set this is ```[a, b, c]```.  
+    For map/object this is ```[[a, 1], [b, 2], [c, 3]]```.
+* "n" No brackets ```[``` and ```]``` around data.  
+    For array/set this is ```a, b, c```.  
+    For map/object this is ```a: 1, b: 2, c: 3```.
+* "b" Use curly braces ```{``` and ```}``` instead of brackets ```[``` and ```]```.  
+    For array/set this is ```{a, b, c}```.  
+    For map/object this is ```{{a, 1}, {b, 2}, {c, 3}}```.
+* "m" Use map format.  
+    For map/object this is ```[a: 1, b: 2, c: 3]```.
+* "s" Output content without any brackets/braces and separators.  
+    For array/set this is ```abc```.  
+    For map/object this is ```a1b2c3```.
 
 ## Examples
 

@@ -8,7 +8,7 @@ import { getValidFillCharAt } from "./utils/char-coding";
  * 
  * ElementPresentation:
  *
- * [[fill]align][sign]["z"]["#"]["0"][width][grouping]["." precision][L][type]
+ * [[fill]align][sign]["z"]["#"]["0"][width][grouping]["." precision]["L"][type]
  */
 
 /**
@@ -16,7 +16,7 @@ import { getValidFillCharAt } from "./utils/char-coding";
  *
  * [[fill]align][width][type]
  * align: '<', '^', '>'
- * type: '' (default), 'd' (default), 'n' (no braces), 'b' (curly braces), 's' (string), 'm' (map)
+ * type: '' (default), 'd' (default), 'n' (no brackets), 'b' (curly braces), 's' (string), 'm' (map)
  */
 
 // Base class for element/array presentations to help with parsing.
