@@ -133,15 +133,17 @@ catch(e) {
 ```
 
 ## String Formatting
-Replacement field is enclosed in braces ```{}``` and consists of parts separated by colon ```:```.
+String formatting is done using replacement fields that are enclosed in braces (```{}```). Each replacement field can include parts separated by a colon (```:```). During formatting, the fields are replaced by corresponding arguments, which are formatted according to the specified rules. 
+
+Replacement field format is:
 
     {field_id:arr_1:arr_2:arr_N:elem}
 
-- First part (field_id) is field number/id.
-- Last part (elem) is **element presentation**.
-- Parts between (arr_1...arr_N) are **array presentations**.
+- First part (```field_id```) is field number/id.
+- Last part (```elem```) is **element presentation**.
+- Parts between (```arr_1```...```arr_N```) are **array presentations**.
 
-Any part can be empty string/omitted. Following are valid:
+Any part can be empty string/omitted. For example, replacement fields containing following parts are valid:
 
     {}
     {field_id}
