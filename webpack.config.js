@@ -62,6 +62,9 @@ const makeConfig = ({ env, argv, format, filename, libraryType, bundleJsbi }) =>
             new webpack.BannerPlugin({
                 banner: `BraceFormat v${packageJson.version} | (c) 2025 Stefan++ Software Studio | Licensed under the zlib License | Includes JSBI (Apache License 2.0)`
             }),
+            new webpack.DefinePlugin({
+                __LIB_INFO__: JSON.stringify(`BraceFormat v${packageJson.version} (${format})`)
+            }),
         ],
         externals: bundleJsbi ? undefined : {
             jsbi: "jsbi"

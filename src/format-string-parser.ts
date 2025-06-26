@@ -7,6 +7,9 @@ import { FormatError } from "./index";
 import { IntWrapper, NumberWrapper } from "./number-wrapper";
 import { LRUCache } from "./utils/LRU-cache";
 
+// These declarations are defined in webpack.config.js by DefinePlugin.
+declare const __LIB_INFO__: string;
+
 // Replacement field regex arr. Try simple first, if fails try with nested braces.
 const ReplacementFieldRegExs: RegExp[] = [
     // Simple match, just any chars between braces '{...}'.
@@ -376,6 +379,12 @@ export class FormatStringParser {
                 return argsObj[fieldId];
             }
             else {
+                // Get secret internal variables.
+                switch (fieldId) {
+                    case "__LIB_INFO__":
+                        return __LIB_INFO__;
+                }
+
                 this.throwInvalidFieldId(fieldId);
             }
         }
