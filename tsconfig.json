@@ -33,8 +33,7 @@
     ],
     "exclude": [
         "node-modules",
-        "**/*.test.ts",
-        "**/*.d.ts"
+        "**/*.test.ts"
     ],
     "compileOnSave": false
 }
