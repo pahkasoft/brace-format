@@ -1,7 +1,7 @@
 {
     "name": "@tspro/brace-format",
     "version": "3.0.2",
-    "author": "Stefan++ Software Studio",
+    "author": "PahkaSoft",
     "private": false,
     "license": "zlib",
     "description": "BraceFormat TS/JS String Formatter",
