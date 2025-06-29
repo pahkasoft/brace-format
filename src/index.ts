@@ -33,7 +33,7 @@ export function setLocale(locale?: string) {
 }
 
 /**
- * Exceoption class, trown on format and value errors.
+ * Exceoption class, thrown on format and value errors.
  * @public
  */
 export class FormatError extends Error {

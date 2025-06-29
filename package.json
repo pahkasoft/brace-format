@@ -58,8 +58,9 @@
         }
     },
     "scripts": {
-        "build:dev": "rimraf dist && webpack --mode development && api-extractor run --local && rimraf dist/temp-types",
-        "build:prod": "rimraf dist && webpack --mode production && api-extractor run --local && rimraf dist/temp-types",
+        "build:types": "tsc --project tsconfig.types.json && api-extractor run --local && rimraf dist/temp-types",
+        "build:dev": "rimraf dist && npm run build:types && webpack --mode development",
+        "build:prod": "rimraf dist && npm run build:types && webpack --mode production",
         "watch": "npm-watch build:dev",
         "test": "karma start",
         "benchmark": "npm run build:prod && node benchmarks/benchmark.mjs"
