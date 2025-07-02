@@ -6,7 +6,7 @@
         "email": "pahkasoft@outlook.com"
     },
     "private": false,
-    "license": "zlib",
+    "license": "MIT",
     "description": "BraceFormat TS/JS String Formatter",
     "main": "dist/index.cjs.js",
     "module": "dist/index.esm.mjs",
