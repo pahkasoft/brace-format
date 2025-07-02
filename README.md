@@ -291,8 +291,3 @@ This project is licensed under the [zlib License](https://opensource.org/license
 
 It also bundles the [JSBI](https://github.com/GoogleChromeLabs/jsbi) library,
 which is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
-
-## Contact
-
-If you have questions or issues, feel free to contact me via [GitHub](https://github.com/pahkasoft).  
-My email is visible to logged-in GitHub users on my profile page.

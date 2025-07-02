@@ -2,6 +2,9 @@
     "name": "@tspro/brace-format",
     "version": "3.0.2",
     "author": "PahkaSoft",
+    "bugs": {
+        "email": "pahkasoft@outlook.com"
+    },
     "private": false,
     "license": "zlib",
     "description": "BraceFormat TS/JS String Formatter",
