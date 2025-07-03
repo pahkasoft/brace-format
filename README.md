@@ -3,11 +3,7 @@ BraceFormat is a TS/JS string formatter using brace notation, inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
-## Disclaimer!
-
-This is a hobby project—I'm building it for fun and to learn, but I'm putting
-real effort into making it solid! That said, there might still be some bugs or
-unexpected behavior. Please keep that in mind when using it!
+Note: This project is under development and may still contain bugs or unexpected behavior.
 
 ## Note!
 Legacy JavaScript has only a single *number* type, not separate *int* and *float*.
