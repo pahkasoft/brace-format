@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.5] - 2025-07-03
+### Changed
+- Point bug report links directly to issue form.
+
 ## [3.0.4] - 2025-07-03
 ### Changed
 - Bug report via separate issues repository. Removed bugs.email from package.json.
