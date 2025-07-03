@@ -7,28 +7,34 @@ assignees: ''
 ---
 
 ## Describe the bug
-A clear and concise description of what the bug is.
+
+What’s going wrong? A clear and concise description of the issue.
 
 ## Input string
-Example of the input you used:
+
+Provide the format function call that causes the issue:
+
 ```ts
-// Example input
+// Example
+format("Hello, {name}", { name: "World" });
 ```
 
 ## Expected output
-What you expected to happen:
+
+What output did you expect?
+
 ```ts
 // Expected output
+"Hello, World"
 ```
 
 ## Actual output
-What actually happened:
+
+What was the actual output?
+
 ```ts
 // Actual output
 ```
 
 ## Package version
-What version are you using? (You can find this in your `package.json`)
-
-## Additional context
-Add any other information, screenshots, or notes that might help us fix the issue.
+Which version of BraceFormat are you using? (Check your package.json)
