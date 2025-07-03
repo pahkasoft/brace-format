@@ -49,15 +49,15 @@ Use the standalone UMD build via unpkg CDN (use version 3):
 
 ## API
 
-### ```format(str, ...args)```
+### `format(str, ...args)`
 The main formatting function.
 ```js
 format("{} {}!", "Hello", "World");
 ```
 
-### ```int()``` and ```float()```
+### `int()` and `float()`
 
-```int()``` and ```float()``` are wrapper functions that can be used to force *number* to int or float.
+`int()` and `float()` are wrapper functions that can be used to force *number* to int or float.
 
 ```js
 format("{}", int(5));   // "5"
@@ -70,27 +70,27 @@ Note: Formatting rules are strict.
 format("{:.2e}", int(5)); // Throws, cannot format int as float.
 format("{:d}", float(5)); // Throws, cannot format float as int.
 ```
-```float()``` simply wraps a *number*, while ```int()``` wraps a ```JSBI.BigInt```, enabling support for large integers.
+`float()` simply wraps a *number*, while `int()` wraps a `JSBI.BigInt`, enabling support for large integers.
 
 ```js
 format("{:d}", int("111111111111111111111111111111"));
 ```
 
-You can also pass ```BigInt``` to ```format()```, it will be safely wrapped to int().
+You can also pass `BigInt` to `format()`, it will be safely wrapped to int().
 
 ```js
 format("{:d}", BigInt("111111111111111111111111111111"));
 ```
 
-### ```setLocale(locale?)```
-Sets the locale for ```"n"``` and ```"L"``` specifiers:
+### `setLocale(locale?)`
+Sets the locale for `"n"` and `"L"` specifiers:
 
 ```js
 setLocale("en-UK");
 setLocale(); // Reset to default
 ```
 
-### ```FormatError```
+### `FormatError`
 Thrown for formatting violations:
 
 ```js
@@ -111,9 +111,9 @@ BraceFormat uses replacement fields like {}, {0}, {name}, with support for detai
 
     {field_id:arr_1:arr_2:arr_N:elem}
 
-- ```field_id```: field id/name
-- ```arr_*```: array/object presentations
-- ```elem```: element presentation
+- `field_id`: field id/name
+- `arr_*`: array/object presentations
+- `elem`: element presentation
 
 Any part can be empty string/omitted.
 
