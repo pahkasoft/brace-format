@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.4] - 2025-07-03
+### Changed
+- Bug report via separate issues repository. Removed bugs.email from package.json.
+
 ## [3.0.3] - 2025-07-02
 ### Changed
 - License switch from zlib to MIT.
