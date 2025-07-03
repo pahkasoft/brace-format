@@ -285,7 +285,7 @@ format("{0:#b} {0:#o} {0:#d} {0:#x} {0:c}", 65); // "0b1000001 0o101 65 0x41 A"
 
 Found a bug or unexpected behavior?
 
-[Please open an issue.](https://github.com/pahkasoft/issues)
+[Please open a new issue.](https://github.com/pahkasoft/issues/issues/new)
 
 You can also suggest a feature or impovement.
 
