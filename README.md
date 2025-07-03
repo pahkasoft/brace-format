@@ -177,11 +177,12 @@ Types:
 | `s`           | `123`                | `a1b2c3`                   |
 
 ### More Info
-* [C++20 format specification](https://en.cppreference.com/w/cpp/utility/format/spec)
-* [Python format specification](https://docs.python.org/3/library/string.html#formatspec)
 
-Element presentation is mostly standard as in the links above.
-Formatting arrays is less standard so array presentation used here is partly my own design.
+* More informatino about format specs: 
+[C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and 
+[Python format](https://docs.python.org/3/library/string.html#formatspec).
+* Formatting elements is quite standard as in the links above.
+* Formatting arrays is less standard so array presentation used here is partly improvised.
 
 ## Examples
 ```js
