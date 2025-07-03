@@ -178,7 +178,7 @@ Types:
 
 ### More Info
 
-* More informatino about format specs: 
+* More information about format specs: 
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and 
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 * Formatting elements is quite standard as in the links above.
