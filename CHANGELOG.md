@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.6] - 2025-07-03
+### Changed
+- Updated README.md, using tables to present information.
+
 ## [3.0.5] - 2025-07-03
 ### Changed
 - Point bug report links directly to issue form.
