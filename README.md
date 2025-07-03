@@ -5,40 +5,16 @@ BraceFormat is a TS/JS string formatter using brace notation, inspired by
 
 Note: This project is under development and may still contain bugs or unexpected behavior.
 
-## Note!
-Legacy JavaScript has only a single *number* type, not separate *int* and *float*.
-```js
-// By default format number as float.
-format("{}", 5);   // "5.0"
 
-// To format number as integer, use type "d".
-format("{:d}", 5); // "5"
-
-// Now you can also use int() and float() wrappers. See more below.
-format("{}", int(5));   // "5"
-format("{}", float(5)); // "5.0"
-```
-
-## Install
+## Installation
 ```sh
 npm i @tspro/brace-format
 ```
 
-## Compatibility
-This library is written in TypeScript and includes type declarations.
-It is bundled with Webpack into ESM, CJS, and UMD formats.
-
-* Only ES5-compatible JavaScript functions are used.
-* No polyfills are included.
-* CJS and UMD bundles are transpiled with Babel for ES5/IE11 compatibility.
-* ESM bundle targets modern environments (ES6+).
-
-While designed for compatibility in mind, the library has not been explicitly
-tested against specific Node.js or browser versions.
-
 ## Usage
 
-### ESM
+### Import (ESM)
+
 ```js
 // Import default export
 import StrFmt from "@tspro/brace-format";
@@ -51,17 +27,17 @@ import { format, int, float, setLocale, FormatError } from "@tspro/brace-format"
 format("...");
 ```
 
-### CJS
+### Require (CommonJS)
+
 ```js
 const StrFmt = require("@tspro/brace-format");
 
 StrFmt.format("...");
 ```
 
-### UMD (browser)
-This version is bundled with dependencies so it can be used standalone in browser.
+### Browser Script
+Use the standalone UMD build via unpkg CDN (use version 3):
 
-Available via the unpkg CDN. Use with version @3.
 ```html
 <script src="https://unpkg.com/@tspro/brace-format@3"></script>
 
@@ -71,15 +47,15 @@ Available via the unpkg CDN. Use with version @3.
 </script>
 ```
 
-## Declarations
+## API
 
-### Function ```format(str, ...args)```
-This is the main formatting function.
+### ```format(str, ...args)```
+The main formatting function.
 ```js
 format("{} {}!", "Hello", "World");
 ```
 
-### Functions ```int()``` and ```float()```
+### ```int()``` and ```float()```
 
 ```int()``` and ```float()``` are wrapper functions that can be used to force *number* to int or float.
 
@@ -106,17 +82,17 @@ You can also pass ```BigInt``` to ```format()```, it will be safely wrapped to i
 format("{:d}", BigInt("111111111111111111111111111111"));
 ```
 
-### Function ```setLocale(locale)```
-
-Default locale is automatically detected.
-Locale affects decimal and grouping separators when using the ```"n"``` or ```"L"``` specifiers.
+### ```setLocale(locale?)```
+Sets the locale for ```"n"``` and ```"L"``` specifiers:
 
 ```js
 setLocale("en-UK");
 setLocale(); // Reset to default
 ```
 
-### Class ```FormatError```
+### ```FormatError```
+Thrown for formatting violations:
+
 ```js
 try {
     format("{:s}", 42);
@@ -128,113 +104,78 @@ catch(e) {
 }
 ```
 
-## String Formatting
-String formatting is done using replacement fields that are enclosed in braces (```{}```). Each replacement field can include parts separated by a colon (```:```). During formatting, the fields are replaced by corresponding arguments, which are formatted according to the specified rules. 
+## Format Specification
+BraceFormat uses replacement fields like {}, {0}, {name}, with support for detailed format specs.
 
-Replacement field format is:
+### Replacement Field Structure
 
     {field_id:arr_1:arr_2:arr_N:elem}
 
-- First part (```field_id```) is field number/id.
-- Last part (```elem```) is **element presentation**.
-- Parts between (```arr_1```...```arr_N```) are **array presentations**.
+- ```field_id```: field id/name
+- ```arr_*```: array/object presentations
+- ```elem```: element presentation
 
-Any part can be empty string/omitted. For example, replacement fields containing following parts are valid:
+Any part can be empty string/omitted.
 
-    {}
-    {field_id}
-    {:elem}
-    {::}
-    {field_id:elem}
-
-### Element presentation
+### Element Presentation
 Format specification for element:
 
     [[fill]align][sign]["z"]["#"]["0"][width][grouping]["." precision]["L"][type]
 
-#### fill
-Fill can be any single codepoint character.
 
-#### align
-* ```"<"``` Forces the field to be left-aligned within field width.
-* ```"^"``` Forces the field to be centered within field width.
-* ```">"``` Forces the field to be right-aligned within field width.
-* ```"="``` Forces the padding to be placed after the sign (if any) but before the digits.
+| Part        | Description          |
+| ----------- | -------------------- |
+| `fill`      | Any char             |
+| `align`     | `<`, `^`, `>`, `=`   |
+| `sign`      | `+`, `-`, space      |
+| `z`         | Force -0 to +0       |
+| `#`         | Alternate form       |
+| `0`         | Zero padding         |
+| `width`     | Width or nested `{}` |
+| `grouping`  | `,` or `_`           |
+| `precision` | For floats/strings   |
+| `L`         | Locale-aware         |
+| `type`      | See type table below |
 
-#### sign
-* ```"+"``` Use sign for both positive and negative numbers.
-* ```"-"``` Use sign only for negative numbers.
-* ```" "``` Use leading space for positive numbers, and minus sign for negative numbers.
+Types:
 
-#### "z"
-Force negative zero to positive zero for floating point types.
+| Type      | Description         |
+| --------- | ------------------- |
+| Omitted   | Default             |
+| `s`       | String              |
+| `c`       | Char (from int)     |
+| `d`       | Decimal int         |
+| `n`       | Decimal with locale |
+| `b` / `B` | Binary              |
+| `o`       | Octal               |
+| `x` / `X` | Hex                 |
+| `e` / `E` | Scientific float    |
+| `f` / `F` | Fixed float         |
+| `%`       | Percent             |
+| `g` / `G` | General float       |
+| `a` / `A` | Hex float           |
 
-#### "#"
-Use alternate form. For integers add "0b", "0B", "0o", "0x", "0X" prefix to the result. For floats always include decimal point character. For "g" and "G" types trailing zeroes are not removed.
-
-#### "0"
-Preceding the width field by "0" character enables sign-aware zero-padding for numeric types. This is same as using a fill character of "0" with an alignment type of "=".
-
-#### width
-Positive integer or nested field ```{field_id}``` specifying width of field.
-
-#### grouping
-Specifies digit group separator for numeric types.
-* ```","``` Insert comma every 3 digits for decimal and floating points types.
-* ```"_"``` Insert underscore every 3 digits for decimal and floating point types. For binary, octal and hex types, insert underscore every 4 digits.
-
-#### precision
-Positive integer or nested field {field_id}. For floating point types specifies the precision. For string types specifies how many characters will be used from the field content.
-
-#### "L"
-The ```"L"``` option causes the locale-specific form to be used.
-
-#### type
-* ```""``` (omitted) Default format.
-* ```"s"``` String format.
-* ```"c"``` Character format. Convert integer to unicode character.
-* ```"d"``` Decimal integer format.
-* ```"n"``` Same as "d" but use digit group separators from to locale settings.
-* ```"b" | "B"``` Binary format.
-* ```"o"``` Octal format.
-* ```"x" | "X"``` Hexadecimal format.
-* ```"e" | "E"``` Scientific floating point format.
-* ```"f" | "F"``` Fixed floating point format.
-* ```"%"``` Percent format. Same as fixed floating point format but multiplied by 100.
-* ```"g" | "G"``` General floating point format.
-* ```"a" | "A"``` Normalised hexadecimal exponential format.
-
-### Array presentation
+### Array/Object Presentation
 Format specification for array, set, map and object:
 
     [[fill]align][width][type]
 
-#### fill
-Fill can be any single codepoint character.
+| Part        | Description          |
+| ----------- | -------------------- |
+| `fill`      | Any char             |
+| `align`     | `<`, `^`, `>`        |
+| `width`     | Width or nested `{}` |
+| `type`      | See type table below |
 
-#### align
-* ```"<"``` Forces the field to be left aligned within field width.
-* ```"^"``` Forces the field to be centered within field width.
-* ```">"``` Forces the field to be right aligned within field width.
+Types:
 
-#### width
-Positive integer or nested field ```{field_id}``` specifying width of field.
-
-#### type
-* ```"" | "d"``` Default format.  
-    For array/set this is ```"[a, b, c]"```.  
-    For map/object this is ```"[[a, 1], [b, 2], [c, 3]]"```.
-* ```"n"``` No brackets [ ] around data.  
-    For array/set this is ```"a, b, c"```.  
-    For map/object this is ```"a: 1, b: 2, c: 3"```.
-* ```"b"``` Use curly braces { } instead of brackets [ ].  
-    For array/set this is ```"{a, b, c}"```.  
-    For map/object this is ```"{{a, 1}, {b, 2}, {c, 3}}"```.
-* ```"m"``` Use map format.  
-    For map/object this is ```"[a: 1, b: 2, c: 3]"```.
-* ```"s"``` Output content without any brackets/braces and separators.  
-    For array/set this is ```"abc"```.  
-    For map/object this is ```"a1b2c3"```.
+| Type          | Output For Array/Set | Output For Map/Object      |
+| ------------- | -------------------- | -------------------------- |
+| `d` / Omitted | `[1, 2, 3]`          | `[[a, 1], [b, 2], [c, 3]]` |
+| `n`           | `1, 2, 3`            | `a: 1, b: 2, c: 3`         |
+| `b`           | `{1, 2, 3}`          | `{{a, 1}, {b, 2}, {c, 3}}` |
+| `m`           |                      | `[a: 1, b: 2, c: 3]`       |
+| `s`           | `123`                | `a1b2c3`                   |
 
 ## Examples
 ```js
@@ -257,7 +198,7 @@ format("{:0=8d}", -777); // "-0000777"
 format("{:.2f}", 1); // "1.00"
 
 // String width
-format("{:10.4s}", "Alligator"); // "Alli      "
+format("{:10.4s}", "Alligator");         // "Alli      "
 
 // With nested arguments
 format("{:{}.{}s}", "Alligator", 10, 4); // "Alli      "
@@ -281,8 +222,34 @@ format("{0:.3e} {0:.3f} {0:.3%} {0:.3g} {0:.3a}", Math.PI); // "3.142e+00 3.142 
 format("{0:#b} {0:#o} {0:#d} {0:#x} {0:c}", 65); // "0b1000001 0o101 65 0x41 A"
 ```
 
-## Report a Bug
+### Note!
+Legacy JavaScript has only a single *number* type, not separate *int* and *float*.
 
+```js
+// By default format number as float.
+format("{}", 5);   // "5.0"
+
+// To format number as integer, use type "d".
+format("{:d}", 5); // "5"
+
+// Or use int() and float() to force type.
+format("{}", int(5));   // "5"
+format("{}", float(5)); // "5.0"
+```
+
+## Compatibility
+This library is written in TypeScript and includes type declarations.
+It is bundled with Webpack into ESM, CJS, and UMD formats.
+
+* Only ES5-compatible JavaScript functions are used.
+* No polyfills are included.
+* CJS and UMD bundles are transpiled with Babel for ES5/IE11 compatibility.
+* ESM bundle targets modern environments (ES6+).
+
+While designed for compatibility in mind, the library has not been explicitly
+tested against specific Node.js or browser versions.
+
+## Report a Bug
 Found a bug or unexpected behavior?
 
 [Please open a new issue.](https://github.com/pahkasoft/issues/issues/new)
@@ -292,7 +259,6 @@ You can also suggest a feature or impovement.
 Thanks for helping improve the project!
 
 ## License
-
 This project is licensed under the [MIT License](https://mit-license.org/).
 
 It also bundles the [JSBI](https://github.com/GoogleChromeLabs/jsbi) library,
