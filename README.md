@@ -5,7 +5,6 @@ BraceFormat is a TS/JS string formatter using brace notation, inspired by
 
 Note: This project is under development and may still contain bugs or unexpected behavior.
 
-
 ## Installation
 ```sh
 npm i @tspro/brace-format
@@ -176,6 +175,13 @@ Types:
 | `b`           | `{1, 2, 3}`          | `{{a, 1}, {b, 2}, {c, 3}}` |
 | `m`           |                      | `[a: 1, b: 2, c: 3]`       |
 | `s`           | `123`                | `a1b2c3`                   |
+
+### More Info
+* [C++20 format specification](https://en.cppreference.com/w/cpp/utility/format/spec)
+* [Python format specification](https://docs.python.org/3/library/string.html#formatspec)
+
+Element presentation is mostly standard as in the links above.
+Formatting arrays is less standard so array presentation used here is partly my own design.
 
 ## Examples
 ```js
