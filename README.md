@@ -285,6 +285,16 @@ format("{0:.3e} {0:.3f} {0:.3%} {0:.3g} {0:.3a}", Math.PI); // "3.142e+00 3.142 
 format("{0:#b} {0:#o} {0:#d} {0:#x} {0:c}", 65); // "0b1000001 0o101 65 0x41 A"
 ```
 
+## Report a Bug
+
+Found a bug or unexpected behavior?
+
+[Please open an issue.](https://github.com/pahkasoft/issues)
+
+You can also suggest a feature or impovement.
+
+Thanks for helping improve the project!
+
 ## License
 
 This project is licensed under the [MIT License](https://mit-license.org/).
