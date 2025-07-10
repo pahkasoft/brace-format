@@ -21,7 +21,7 @@
         "noImplicitThis": true,
         "noImplicitReturns": true,
         "alwaysStrict": true,
-        "removeComments": false, // Let babel remove comments.
+        "removeComments": false,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "skipLibCheck": true

@@ -8,34 +8,41 @@
     "private": false,
     "license": "MIT",
     "description": "TS/JS library for powerful string formatting using brace notation.",
-    "main": "dist/index.cjs.js",
-    "module": "dist/index.esm.mjs",
-    "browser": "dist/index.umd.min.js",
-    "unpkg": "dist/index.umd.min.js",
     "types": "dist/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
     "exports": {
         ".": {
-            "require": "./dist/index.cjs.js",
-            "import": "./dist/index.esm.mjs",
-            "browser": "./dist/index.umd.min.js",
-            "types": "./dist/index.d.ts"
+            "browser": {
+                "require": {
+                    "types": "./dist/index.d.ts",
+                    "default": "./dist/index.js"
+                },
+                "import": {
+                    "types": "./dist/index.d.mts",
+                    "default": "./dist/index.mjs"
+                }
+            },
+            "require": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            },
+            "import": {
+                "types": "./dist/index.d.mts",
+                "default": "./dist/index.mjs"
+            }
         }
     },
+    "unpkg": "dist/index.global.js",
     "dependencies": {
         "jsbi": "^4.3.2"
     },
     "devDependencies": {
-        "@babel/cli": "^7.27.2",
-        "@babel/core": "^7.27.1",
-        "@babel/preset-env": "^7.27.2",
-        "@microsoft/api-extractor": "^7.52.8",
+        "@swc/core": "^1.12.11",
         "@types/jasmine": "^5.1.8",
-        "@webpack-cli/serve": "^3.0.1",
         "api-extractor": "^99.99.99",
-        "babel-loader": "^10.0.0",
         "benchmark": "^2.1.4",
-        "clean-webpack-plugin": "^4.0.0",
-        "jasmine": "^5.7.1",
+        "jasmine": "^5.8.0",
         "karma": "^6.4.4",
         "karma-chrome-launcher": "^3.2.0",
         "karma-cli": "^2.0.0",
@@ -43,13 +50,8 @@
         "karma-sourcemap-loader": "^0.4.0",
         "karma-webpack": "^5.0.1",
         "npm-watch": "^0.13.0",
-        "rimraf": "^6.0.1",
-        "terser-webpack-plugin": "^5.3.14",
-        "ts-loader": "^9.5.2",
-        "typescript": "^5.8.3",
-        "webpack": "^5.99.8",
-        "webpack-cli": "^6.0.1",
-        "webpack-dev-server": "^5.2.1"
+        "tsup": "^8.5.0",
+        "typescript": "^5.8.3"
     },
     "watch": {
         "build:dev": {
@@ -61,12 +63,10 @@
         }
     },
     "scripts": {
-        "build:types": "tsc --project tsconfig.types.json && api-extractor run --local && rimraf dist/temp-types",
-        "build:dev": "rimraf dist && npm run build:types && webpack --mode development",
-        "build:prod": "rimraf dist && npm run build:types && webpack --mode production",
-        "watch": "npm-watch build:dev",
+        "build": "tsup",
+        "watch": "tsup --watch",
         "test": "karma start",
-        "benchmark": "npm run build:prod && node benchmarks/benchmark.mjs"
+        "benchmark": "npm run build && node benchmarks/benchmark.mjs"
     },
     "browserslist": [
         "defaults"
