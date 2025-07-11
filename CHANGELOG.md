@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.1.0] - 2025-07-11
+### Changed
+- Use tsup for bundling (previously webpack). No changes should be required in documented usage.
+
 ## [3.0.6] - 2025-07-03
 ### Changed
 - Updated README.md, using tables to present information.
