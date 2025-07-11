@@ -35,7 +35,7 @@ StrFmt.format("...");
 ```
 
 ### Browser Script
-Use the standalone UMD build via unpkg CDN (use version 3):
+Use the standalone IIFE bundle via unpkg CDN (version 3):
 
 ```html
 <script src="https://unpkg.com/@tspro/brace-format@3"></script>
