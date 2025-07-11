@@ -4,7 +4,7 @@ import { ElementPresentation } from "./replacement-field";
 import { NumberConverter } from "./number-converter";
 import { GroupingInfo } from "./grouping-info";
 import { NumberWrapper } from "./number-wrapper";
-import { FormatStringParser } from "format-string-parser";
+import { FormatStringParser } from "./format-string-parser";
 
 // Get number prefix.
 function getNumberPrefix(ep: ElementPresentation) {

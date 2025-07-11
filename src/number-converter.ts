@@ -1,6 +1,6 @@
 import { assert, isInteger, isNegative, zeroArray } from "./utils/common";
 import { ElementPresentation } from "./replacement-field";
-import { FormatStringParser } from "format-string-parser";
+import { FormatStringParser } from "./format-string-parser";
 
 // Class is for converting finite numbers.
 export class NumberConverter {
