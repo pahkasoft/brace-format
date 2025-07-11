@@ -246,14 +246,14 @@ format("{}", float(5)); // "5.0"
 
 ## Compatibility
 This library is written in TypeScript and includes type declarations.
-It is bundled with Webpack into ESM, CJS, and UMD formats.
+Since v3.1.0, it is bundled into ESM, CJS, and IIFE formats using tsup
+(previously webpack). No changes should be required in the documented usage.
 
 * Only ES5-compatible JavaScript functions are used.
-* No polyfills are included.
-* CJS and UMD bundles are transpiled with Babel for ES5/IE11 compatibility.
-* ESM bundle targets modern environments (ES6+).
+* CJS and IIFE bundles are transpiled to ES5 for broad compatibility.
+* The ESM bundle targets modern environments (ES6+).
 
-While designed for compatibility in mind, the library has not been explicitly
+While designed with compatibility in mind, the library has not been explicitly
 tested against specific Node.js or browser versions.
 
 ## Report a Bug
