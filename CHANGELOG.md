@@ -1,5 +1,10 @@
 # Changelog
 
+## [3.1.1] - 2025-07-11
+### Fixed
+- Locale might not have been detected in some cases.
+- Changed fallback locale from 'en-UK' (which was invalid) to 'en-GB'.
+
 ## [3.1.0] - 2025-07-11
 ### Changed
 - Use tsup for bundling (previously webpack). No changes should be required in documented usage.
