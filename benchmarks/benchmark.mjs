@@ -1,5 +1,5 @@
 import Benchmark from "benchmark";
-import { format } from "../dist/index.esm.mjs";
+import { format } from "../dist/index.mjs";
 
 const tasks = [
     {
