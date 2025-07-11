@@ -124,7 +124,7 @@ describe("Testing BraceFormat", () => {
     });
 
     it("type specifier n", () => {
-        expect(formatLocale("en-UK", "{:n}", 1234567890)).toEqual("1,234,567,890");
+        expect(formatLocale("en-GB", "{:n}", 1234567890)).toEqual("1,234,567,890");
 
         expect(formatLocale("hi-IN", "{:n}", 1234567891)).toEqual("1,23,45,67,891");
         expect(formatLocale("hi-IN", "{:n}", 123456789)).toEqual("12,34,56,789");
@@ -132,8 +132,8 @@ describe("Testing BraceFormat", () => {
     });
 
     it("locale specifier L", () => {
-        expect(formatLocale("en-UK", "{:Ld}", 9876543210)).toEqual("9,876,543,210");
-        expect(formatLocale("en-UK", "{:.2Lf}", 654321.0987)).toEqual("654,321.10");
+        expect(formatLocale("en-GB", "{:Ld}", 9876543210)).toEqual("9,876,543,210");
+        expect(formatLocale("en-GB", "{:.2Lf}", 654321.0987)).toEqual("654,321.10");
 
         expect(formatLocale("hi-IN", "{:.2Lf}", 345678.9012)).toEqual("3,45,678.90");
         expect(formatLocale("hi-IN", "{:.2Lf}", 67890.1234)).toEqual("67,890.12");

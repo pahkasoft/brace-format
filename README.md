@@ -85,7 +85,7 @@ format("{:d}", BigInt("111111111111111111111111111111"));
 Sets the locale for `"n"` and `"L"` specifiers:
 
 ```js
-setLocale("en-UK");
+setLocale("en-GB");
 setLocale(); // Reset to default
 ```
 

@@ -2,14 +2,20 @@ import { assert } from "./utils/common";
 import { LRUCache } from "./utils/LRU-cache";
 
 // Get user/system locale
-const defaultLocale = (function getUserLocale(): string | undefined {
+function getUserLocale(): string {
     try {
-        return (navigator?.languages ? navigator.languages[0] : navigator?.language) ?? Intl.DateTimeFormat().resolvedOptions().locale;
+        const lang = typeof navigator === "undefined"
+            ? undefined
+            : (navigator?.languages?.[0] || navigator?.language);
+
+        return lang || Intl.DateTimeFormat().resolvedOptions().locale || "en-GB";
     }
     catch (e) {
-        return undefined;
+        return "en-GB";
     }
-})() || "en-UK";
+}
+
+const defaultLocale = getUserLocale();
 
 // Grouping info class.
 export class GroupingInfo {
@@ -68,7 +74,7 @@ export class GroupingInfo {
                 // Dismiss left most group size because it can be partial.
                 groupSizes.pop();
 
-                // Need  at most 2 rightmost group sizes ("en-UK" has [3, 3], "hi-IN" has [3, 2], etc.)
+                // Need  at most 2 rightmost group sizes ("en-GB" has [3, 3], "hi-IN" has [3, 2], etc.)
                 groupSizes.splice(2);
             }
 
