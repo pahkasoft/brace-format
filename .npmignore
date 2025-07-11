@@ -11,6 +11,7 @@
 package-lock.json
 karma.conf.js
 tsconfig.json
+tsup.config.ts
 typedoc.json
 workspace.code-workspace
 INSTRUCTIONS.md
