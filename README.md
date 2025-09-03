@@ -259,7 +259,7 @@ tested against specific Node.js or browser versions.
 ## Report a Bug
 Found a bug or unexpected behavior?
 
-[Please open a new issue.](https://github.com/pahkasoft/issues/issues/new)
+[Please open a new issue.](https://github.com/pahkasoft/brace-format/issues)
 
 You can also suggest a feature or impovement.
 
