@@ -2,8 +2,12 @@
     "name": "@tspro/brace-format",
     "version": "3.1.1",
     "author": "PahkaSoft",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pahkasoft/brace-format.git"
+    },
     "bugs": {
-        "url": "https://github.com/pahkasoft/issues/issues/new"
+        "url": "https://github.com/pahkasoft/brace-format/issues"
     },
     "private": false,
     "license": "MIT",
