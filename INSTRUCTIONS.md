@@ -8,8 +8,7 @@
 
 ### Build
 
-    npm run build:dev
-    npm run build:prod
+    npm run build
 
 ## Profiling
     cd benchmarks
