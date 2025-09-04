@@ -1,5 +1,10 @@
 # Changelog
 
+## [3.1.2] - 2025-09-04
+### Changed
+- Project status: manintenance
+- Added issue templates to published github repo.
+
 ## [3.1.1] - 2025-07-11
 ### Fixed
 - Locale might not have been detected in some cases.
