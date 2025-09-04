@@ -3,7 +3,8 @@ BraceFormat is a TS/JS string formatter using brace notation, inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
-Note: This project is under development and may still contain bugs or unexpected behavior.
+## Project Status
+This project is now in maintenance. I will fix bugs and add features on request.
 
 ## Installation
 ```sh
