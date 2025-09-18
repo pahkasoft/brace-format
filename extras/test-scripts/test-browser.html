@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BraceFormat Browser Test</title>
+</head>
+
+<body>
+    <h1>Browser Browser Test</h1>
+
+    <!--
+	// Use local
+    <script src="../../dist/index.global.js"></script>
+
+	// Use CDN
+    <script src="https://unpkg.com/@tspro/brace-format@3.1.2"></script>
+    <script src="https://unpkg.com/@tspro/brace-format@3.1.2/dist/index.global.js"></script>
+	-->
+
+    <script src="https://unpkg.com/@tspro/brace-format@3.1.2/dist/index.global.js"></script>
+
+    <div id="test"></div>
+
+    <script>
+        var format = window.BraceFormat.format;
+        var int = window.BraceFormat.int;
+
+        var e = document.getElementById("test");
+
+        var str = "";
+
+        str += format("<p>{__LIB_INFO__}</p>");
+        str += format("<p>Test: {}, {}</p>", "Hello World", int(99));
+        str += format("<p>Test 'n': {:n}</p>", 9999999999);
+
+        e.innerHTML = str;
+    </script>
+</body>
+
+</html>
