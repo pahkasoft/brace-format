@@ -1,6 +1,6 @@
 ---
-name: BraceFormat Feature Request
-about: Suggest an improvement or new feature for BraceFormat
+name: Feature Request
+about: Suggest an improvement or new feature
 title: "[Feature]: "
 labels: enhancement
 assignees: ''

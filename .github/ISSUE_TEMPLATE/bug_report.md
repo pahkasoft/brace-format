@@ -1,6 +1,6 @@
 ---
-name: BraceFormat Bug Report
-about: Report a problem with BraceFormat
+name: Bug Report
+about: Report a problem
 title: "[Bug]: "
 labels: bug
 assignees: ''
