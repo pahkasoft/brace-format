@@ -54,6 +54,7 @@
         "npm-watch": "^0.13.0",
         "ts-loader": "^9.5.2",
         "tsup": "^8.5.0",
+        "typedoc": "^0.28.14",
         "typescript": "latest",
         "webpack": "^5.100.0"
     },
@@ -70,6 +71,7 @@
         "build": "tsup",
         "watch": "tsup --watch",
         "test": "karma start",
+        "docs": "typedoc",
         "benchmark": "npm run build && node benchmarks/benchmark.mjs"
     },
     "browserslist": [
