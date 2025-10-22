@@ -3,8 +3,8 @@ import path from "path";
 import { execSync } from "child_process";
 
 const variants = [
-    ["brace-format", "@tspro/brace-format", "BraceFormat"],
-    ["std-format", "@sbrockma/std-format", "StdFormat"]
+    ["tspro-brace-format", "@tspro/brace-format", "BraceFormat"],
+    ["sbrockma-std-format", "@sbrockma/std-format", "StdFormat"]
 ];
 
 const filesToCopy = ["README.md", "CHANGELOG.md", "LICENSE"];
@@ -21,8 +21,9 @@ const templateContent = fs.readFileSync(rootPkgPath, "utf8");
 for (const variant of variants) {
     const [dirName, pkgName, libName] = variant;
 
-    const distPath = path.resolve("./dist/" + dirName);
-    const distPkgPath = path.join(distPath, "package.json");
+    const bundlePath = path.resolve("./dist/" + dirName);
+    const bundlePkgPath = path.join(bundlePath, "package.json");
+    const bundleDistPath = bundlePath + "/dist";
 
     console.log(`\n📦 Publishing ${pkgName} ...`);
 
@@ -31,7 +32,7 @@ for (const variant of variants) {
         const pkgContent = templateContent.replace(/replace_package_name/g, pkgName);
 
         // Run tsup build with env var
-        execSync(`npx cross-env LIB_NAME=${libName} DIST_PATH=${distPath} npx tsup`, {
+        execSync(`npx cross-env LIB_NAME=${libName} DIST_PATH=${bundleDistPath} npx tsup`, {
             stdio: "inherit",
             shell: true
         });
@@ -39,24 +40,29 @@ for (const variant of variants) {
         // Copy static files into dist
         filesToCopy.forEach(file => {
             const src = path.join(process.cwd(), file);
-            const dest = path.join(distPath, file);
+            const dest = path.join(bundlePath, file);
             if (fs.existsSync(src)) fs.copyFileSync(src, dest);
         });
 
         // Write temporary package.json to dist
-        fs.writeFileSync(distPkgPath, pkgContent);
+        fs.writeFileSync(bundlePkgPath, pkgContent);
 
-        // Run npm pack
-        execSync(`npm pack`, { cwd: distPath, stdio: "inherit", shell: true });
+        // Create npm pack
+        execSync(`npm pack --quiet`, {
+            cwd: bundlePath,
+            stdio: "inherit",
+            shell: true
+        });
 
         // Publish from dist
         execSync("npm publish --access public --dry-run", {
-            cwd: distPath,
+            cwd: bundlePath,
             stdio: "inherit"
         });
 
         console.log(`✅ Successfully published ${pkgName}`);
-    } catch (err) {
+    }
+    catch(err) {
         console.error(`❌ Failed to publish ${pkgName}`);
         if (err.stderr) console.error(err.stderr.toString());
         if (err.stdout) console.log(err.stdout.toString());
