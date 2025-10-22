@@ -46,6 +46,9 @@ for (const variant of variants) {
         // Write temporary package.json to dist
         fs.writeFileSync(distPkgPath, pkgContent);
 
+        // Run npm pack
+        execSync(`npm pack`, { cwd: distPath, stdio: "inherit", shell: true });
+
         // Publish from dist
         execSync("npm publish --access public --dry-run", {
             cwd: distPath,
