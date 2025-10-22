@@ -12,13 +12,14 @@ A TS/JS string formatter library inspired by
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
 ## Version 4 Update
-This project started as `@sbrockma/std-format`. Then I wanted better scope/package name
-and switched to `@tspro/brace-format`, deprecating the former. Recently I noticed that
-brace-format has something like one weekly download while std-format had over 100.
-So I decided to join them together: use same source to publish both packages.
+From version `4.0.0` on both `@sbrockma/std-format` and `@tspro/brace-format` are
+equal libraries, only difference being the library name StdFormat and BraceFormat.
 
-So from version 4.0.0 on both `@sbrockma/std-format` and `@tspro/brace-format` are equal
-libraries, only difference being the  library name `StdFormat` and `BraceFormat`.
+This project started as `@sbrockma/std-format`. I was not satisfied with the
+scope/package name and switched to `@tspro/brace-format`, deprecating the former.
+Recently I noticed that brace-format has something like one weekly download while
+std-format had over 100. So I decided to join them together: use same source to
+publish both packages.
 
 ## Project Status
 This project is now in maintenance. I will fix bugs and add features on request.
