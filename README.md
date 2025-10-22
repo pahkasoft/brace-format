@@ -1,5 +1,12 @@
 # BraceFormat / StdFormat - A Powerfull TS/JS String Formatter
 
+[Homepage](https://pahkasoft.github.io/brace-format) |
+[Repository](https://github.com/pahkasoft/brace-format) | 
+[Package - BraceFormat](https://www.npmjs.com/package/@tspro/brace-format) |
+[Package - StdFormat](https://www.npmjs.com/package/@sbrockma/std-format)
+
+## About
+
 A TS/JS string formatter library inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
