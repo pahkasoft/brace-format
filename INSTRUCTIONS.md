@@ -30,5 +30,5 @@
 
     // Publish
     npm login
-    npm publish --access public
+    node ./scripts/publish-variants.mjs
 

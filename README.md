@@ -1,15 +1,19 @@
-# BraceFormat TS/JS String Formatter
-BraceFormat is a TS/JS string formatter using brace notation, inspired by
+# BraceFormat / StdFormat - A Powerfull TS/JS String Formatter
+
+A TS/JS string formatter library inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
 ## Project Status
 This project is now in maintenance. I will fix bugs and add features on request.
 
-## Installation
-```sh
-npm i @tspro/brace-format
-```
+## Joined BraceFormat and StdFormat
+
+TODO!
+
+## Install
+- Install BraceFormat: `npm i @tspro/brace-format`
+- Install StdFormat: `npm i @sbrockma/std-format`
 
 ## Usage
 
@@ -18,11 +22,13 @@ npm i @tspro/brace-format
 ```js
 // Import default export
 import StrFmt from "@tspro/brace-format";
+import StrFmt from "@sbrackma/std-format";
 
 StrFmt.format("...");
 
 // Or import named exports
 import { format, int, float, setLocale, FormatError } from "@tspro/brace-format";
+import { format, int, float, setLocale, FormatError } from "@sbrockma/std-format";
 
 format("...");
 ```
@@ -31,6 +37,7 @@ format("...");
 
 ```js
 const StrFmt = require("@tspro/brace-format");
+const StrFmt = require("@sbrockma/std-format");
 
 StrFmt.format("...");
 ```
@@ -39,10 +46,12 @@ StrFmt.format("...");
 Use the standalone IIFE bundle via unpkg CDN (version 3):
 
 ```html
-<script src="https://unpkg.com/@tspro/brace-format@3"></script>
+<script src="https://unpkg.com/@tspro/brace-format@3.2.0"></script>
+<script src="https://unpkg.com/@sbrockma/std-format@3.2.0"></script>
 
 <script>
-    var format = window.BraceFormat.format;
+    const { format } = window.BraceFormat;
+    const { format } = window.StdFormat;
     format("...");
 </script>
 ```

@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.2.0] - 2025-10-??
+## Changed
+- Made @tspro/brace-format and @sbrockma/std-format equal variants, published together.
+
 ## [3.1.2] - 2025-09-04
 ### Changed
 - Project status: manintenance
