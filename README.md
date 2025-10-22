@@ -4,12 +4,17 @@ A TS/JS string formatter library inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
+## Version 4 Update
+This project started as `@sbrockma/std-format`. Then I wanted better scope/package name
+and switched to `@tspro/brace-format`, deprecating the former. Recently I noticed that
+brace-format has something like one weekly download while std-format had over 100.
+So I decided to join them together: use same source to publish both packages.
+
+So from version 4.0.0 on both `@sbrockma/std-format` and `@tspro/brace-format` are equal
+libraries, only difference being the  library name `StdFormat` and `BraceFormat`.
+
 ## Project Status
 This project is now in maintenance. I will fix bugs and add features on request.
-
-## Joined BraceFormat and StdFormat
-
-TODO!
 
 ## Install
 - Install BraceFormat: `npm i @tspro/brace-format`
@@ -46,8 +51,8 @@ StrFmt.format("...");
 Use the standalone IIFE bundle via unpkg CDN (version 3):
 
 ```html
-<script src="https://unpkg.com/@tspro/brace-format@3.2.0"></script>
-<script src="https://unpkg.com/@sbrockma/std-format@3.2.0"></script>
+<script src="https://unpkg.com/@tspro/brace-format@4.0.0/dist/index.global.js"></script>
+<script src="https://unpkg.com/@sbrockma/std-format@4.0.0/dist/index.global.js"></script>
 
 <script>
     const { format } = window.BraceFormat;
