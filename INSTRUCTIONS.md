@@ -21,10 +21,11 @@
     // Update version number
     npm version major|minor|patch
 
-    // Build and create packages only
-    node ./scripts/publish-variants.mjs
+    // Build packages
+    node ./scripts/build-variants.mjs
 
-    // Build and publish
+    // Publish packages
     npm login
-    node ./scripts/publish-variants.mjs --publish
+    npm publish --access public ./packed/tspro-brace-format-x.y.z.tgz
+    npm publish --access public ./packed/sbrockma-std-format-x.y.z.tgz
 
