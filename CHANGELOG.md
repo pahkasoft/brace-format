@@ -1,9 +1,12 @@
 # Changelog
+## [4.0.1] - 2025-10-24
+### Changed
+- Support older `StdFormat` but focus is on `BraceFormat`.
+
 ## [4.0.0] - 2025-10-23
 ### Possibly Breaking
-Note! `@tspro/brace-format` and `@sbrockma/std-format` are now exactly the
-same package, only difference being global name when using iife browser
-bundle (use `window.BraceFormat` vs. `window.StdFormat`).
+Note! `BraceFormat` and `StdFormat` are now exactly the same package, only difference being
+global name when using iife browser bundle (`window.BraceFormat` vs. `window.StdFormat`).
 
 ## [3.1.2] - 2025-09-04
 ### Changed
