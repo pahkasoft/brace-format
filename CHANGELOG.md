@@ -1,10 +1,10 @@
 # Changelog
 
-## [4.0.0] - 2025-10-??
-### Major Update
-From version `4.0.0` on both `@tspro/brace-format` and `@sbrockma/std-format`
-are equal libraries published together, only difference in addition
-to pkg name is the library name `BraceFormat` and `StdFormat`.
+## [4.0.0] - 2025-10-23
+### Possibly Breaking
+Note! `@tspro/brace-format` and `@sbrockma/std-format` are now exactly the
+same package, only difference buing global name when using iife browser
+bundle (use `window.BraceFormat` vs. `window.StdFormat`).
 
 ## [3.1.2] - 2025-09-04
 ### Changed

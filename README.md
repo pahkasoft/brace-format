@@ -6,15 +6,14 @@
 [Package - StdFormat](https://www.npmjs.com/package/@sbrockma/std-format)
 
 ## About
-
-A TS/JS string formatter library inspired by
+A TS/JS library for powerful string formatting, inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
 ## Version 4 Update
-From version `4.0.0` on both `@tspro/brace-format` and `@sbrockma/std-format`
-are equal libraries published together, only difference in addition to pkg
-name is the library name `BraceFormat` and `StdFormat`.
+Note! `@tspro/brace-format` and `@sbrockma/std-format` are now exactly the
+same package, only difference buing global name when using iife browser
+bundle (use `window.BraceFormat` vs. `window.StdFormat`).
 
 This project started as `@sbrockma/std-format`. I was not satisfied with the
 scope/package name and switched to `@tspro/brace-format`, deprecating the former.
