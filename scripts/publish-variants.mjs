@@ -1,6 +1,16 @@
 import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
+import readline from "readline";
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+function askQuestion(query) {
+    return new Promise(resolve => rl.question(query, ans => resolve(ans.trim())));
+}
 
 const variants = [
     ["tspro-brace-format", "@tspro/brace-format", "BraceFormat"],
@@ -26,19 +36,16 @@ for (const variant of variants) {
     const bundlePkgPath = path.join(bundlePath, "package.json");
     const bundleDistPath = bundlePath + "/dist";
 
-    if (shouldPublish) {
-        console.log(`\n📦 Publishing pkg for ${pkgName} ...`);
-    }
-    else {
-        console.log(`\n📦 Creating pkg for ${pkgName} ...`);
-    }
-
     try {
-        // Run tsup build with env var
+        console.log(`\n📦 Bundling pkg for ${pkgName} ...`);
+
+                // Run tsup build with env var
         execSync(`npx cross-env LIB_NAME=${libName} DIST_PATH=${bundleDistPath} npx tsup`, {
             stdio: "inherit",
             shell: true
         });
+
+        console.log(`✅ Successfully bundled pkg for ${pkgName}`);
 
         // Copy static files into dist
         filesToCopy.forEach(file => {
@@ -54,14 +61,24 @@ for (const variant of variants) {
         fs.writeFileSync(bundlePkgPath, pkgContent);
 
         if (shouldPublish) {
-            // Publish
-            execSync("npm publish --access public --dry-run", {
-                cwd: bundlePath,
-                stdio: "inherit"
-            });
+            // Ask before publishing
+            const answer = await askQuestion(`Publish ${pkgName} now? (Y/N): `);
+            const answerIsYes = /^y(es)?$/i.test(answer);
 
-            console.log(`✅ Successfully published pkg for ${pkgName}`);
+            if (answerIsYes) {
+                console.log(`\n📦 Publishing pkg for ${pkgName} ...`);
+
+                // Publish
+                execSync("npm publish --access public --dry-run", {
+                    cwd: bundlePath,
+                    stdio: "inherit"
+                });
+
+                console.log(`✅ Successfully published pkg for ${pkgName}`);
+            }
         }
+
+        console.log(`\n📦 Creating pkg for ${pkgName} ...`);
 
         // Pack
         execSync(`npm pack`, {
@@ -78,5 +95,7 @@ for (const variant of variants) {
         if (err.stdout) console.log(err.stdout.toString());
     }
 }
+
+rl.close();
 
 console.log("\n✨ Done.");
