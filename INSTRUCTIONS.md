@@ -7,7 +7,6 @@
     npm run test
 
 ### Build
-
     npm run build
 
 ## Profiling
@@ -22,13 +21,10 @@
     // Update version number
     npm version major|minor|patch
 
-    // Build production version
-    npm run build
-
-    // Test package
-    npm pack
-
-    // Publish
-    npm login
+    // Build and create packages only
     node ./scripts/publish-variants.mjs
+
+    // Build and publish
+    npm login
+    node ./scripts/publish-variants.mjs --publish
 

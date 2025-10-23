@@ -16,8 +16,8 @@ if (!DIST_PATH) {
     process.exit(1);
 }
 
-console.log("tsup: LIB_NAME  =" + LIB_NAME);
-console.log("tsup: DIST_PATH =" + DIST_PATH);
+console.log("tsup: LIB_NAME  = " + LIB_NAME);
+console.log("tsup: DIST_PATH = " + DIST_PATH);
 
 const bannerText = `/* ${LIB_NAME} v${pkg.version} | (c) 2025 PahkaSoft | Licensed under the MIT License | Includes JSBI (Apache License 2.0) */`;
 

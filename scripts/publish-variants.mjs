@@ -9,9 +9,10 @@ const variants = [
 
 const filesToCopy = ["README.md", "CHANGELOG.md", "LICENSE"];
 
+const shouldPublish = process.argv.includes("--publish");
+
 // Delete dist
 execSync("npx rimraf ./dist", { stdio: "inherit" });
-
 
 const rootPkgPath = path.resolve("./package.json");
 
@@ -25,12 +26,14 @@ for (const variant of variants) {
     const bundlePkgPath = path.join(bundlePath, "package.json");
     const bundleDistPath = bundlePath + "/dist";
 
-    console.log(`\n📦 Publishing ${pkgName} ...`);
+    if (shouldPublish) {
+        console.log(`\n📦 Publishing pkg for ${pkgName} ...`);
+    }
+    else {
+        console.log(`\n📦 Creating pkg for ${pkgName} ...`);
+    }
 
     try {
-        // Replace placeholder with actual package name
-        const pkgContent = templateContent.replace(/replace_package_name/g, pkgName);
-
         // Run tsup build with env var
         execSync(`npx cross-env LIB_NAME=${libName} DIST_PATH=${bundleDistPath} npx tsup`, {
             stdio: "inherit",
@@ -44,25 +47,32 @@ for (const variant of variants) {
             if (fs.existsSync(src)) fs.copyFileSync(src, dest);
         });
 
+        // Replace placeholder with actual package name
+        const pkgContent = templateContent.replace(/replace_package_name/g, pkgName);
+
         // Write temporary package.json to dist
         fs.writeFileSync(bundlePkgPath, pkgContent);
 
-        // Create npm pack
-        execSync(`npm pack --quiet`, {
+        if (shouldPublish) {
+            // Publish
+            execSync("npm publish --access public --dry-run", {
+                cwd: bundlePath,
+                stdio: "inherit"
+            });
+
+            console.log(`✅ Successfully published pkg for ${pkgName}`);
+        }
+
+        // Pack
+        execSync(`npm pack`, {
             cwd: bundlePath,
             stdio: "inherit",
             shell: true
         });
 
-        // Publish from dist
-        execSync("npm publish --access public --dry-run", {
-            cwd: bundlePath,
-            stdio: "inherit"
-        });
-
-        console.log(`✅ Successfully published ${pkgName}`);
+        console.log(`✅ Successfully created pkg for ${pkgName}`);
     }
-    catch(err) {
+    catch (err) {
         console.error(`❌ Failed to publish ${pkgName}`);
         if (err.stderr) console.error(err.stderr.toString());
         if (err.stdout) console.log(err.stdout.toString());
