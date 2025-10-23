@@ -12,7 +12,7 @@ A TS/JS library for powerful string formatting, inspired by
 
 ## Version 4 Update
 Note! `@tspro/brace-format` and `@sbrockma/std-format` are now exactly the
-same package, only difference buing global name when using iife browser
+same package, only difference being global name when using iife browser
 bundle (use `window.BraceFormat` vs. `window.StdFormat`).
 
 This project started as `@sbrockma/std-format`. I was not satisfied with the
