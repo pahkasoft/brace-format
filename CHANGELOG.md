@@ -1,7 +1,7 @@
 # Changelog
 ## [4.0.1] - 2025-10-24
 ### Changed
-- Support older `StdFormat` but focus is on `BraceFormat`.
+- Support older `StdFormat` but focus is on `BraceFormat`. 
 
 ## [4.0.0] - 2025-10-23
 ### Possibly Breaking
