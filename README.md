@@ -13,7 +13,7 @@ A TS/JS string formatter library inspired by
 
 ## Version 4 Update
 From version `4.0.0` on both `@sbrockma/std-format` and `@tspro/brace-format` are
-equal libraries, only difference being the library name StdFormat and BraceFormat.
+equal libraries, only difference being the library name BraceFormat and StdFormat.
 
 This project started as `@sbrockma/std-format`. I was not satisfied with the
 scope/package name and switched to `@tspro/brace-format`, deprecating the former.
@@ -32,18 +32,30 @@ This project is now in maintenance. I will fix bugs and add features on request.
 
 ### Import (ESM)
 
+Work with BraceFormat:
 ```js
 // Import default export
 import StrFmt from "@tspro/brace-format";
-import StrFmt from "@sbrackma/std-format";
 
-StrFmt.format("...");
+StrFmt.format("{}, {}!", "Hello", "world");
 
 // Or import named exports
 import { format, int, float, setLocale, FormatError } from "@tspro/brace-format";
+
+format("{}, {}!", "Hello", "world");
+```
+
+Or work with StdFormat:
+```js
+// Import default export
+import StrFmt from "@sbrackma/std-format";
+
+StrFmt.format("{}, {}!", "Hello", "world");
+
+// Or import named exports
 import { format, int, float, setLocale, FormatError } from "@sbrockma/std-format";
 
-format("...");
+format("{}, {}!", "Hello", "world");
 ```
 
 ### Require (CommonJS)
@@ -56,16 +68,25 @@ StrFmt.format("...");
 ```
 
 ### Browser Script
-Use the standalone IIFE bundle via unpkg CDN (version 3):
+Use the standalone IIFE bundle via unpkg CDN.
 
+Work with BraceFormat:
 ```html
 <script src="https://unpkg.com/@tspro/brace-format@4.0.0/dist/index.global.js"></script>
-<script src="https://unpkg.com/@sbrockma/std-format@4.0.0/dist/index.global.js"></script>
 
 <script>
     const { format } = window.BraceFormat;
+    var str = format("{}, {}!", "Hello", "world");
+</script>
+```
+
+Or work with StdFormat:
+```html
+<script src="https://unpkg.com/@sbrockma/std-format@4.0.0/dist/index.global.js"></script>
+
+<script>
     const { format } = window.StdFormat;
-    format("...");
+    var str = format("{}, {}!", "Hello", "world");
 </script>
 ```
 
@@ -74,7 +95,7 @@ Use the standalone IIFE bundle via unpkg CDN (version 3):
 ### `format(str, ...args)`
 The main formatting function.
 ```js
-format("{} {}!", "Hello", "World");
+format("{}, {}!", "Hello", "world");
 ```
 
 ### `int()` and `float()`
@@ -127,7 +148,7 @@ catch(e) {
 ```
 
 ## Format Specification
-BraceFormat uses replacement fields like {}, {0}, {name}, with support for detailed format specs.
+BraceFormat/StdFromat uses replacement fields like {}, {0}, {name}, with support for detailed format specs.
 
 ### Replacement Field Structure
 
