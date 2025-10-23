@@ -1,5 +1,6 @@
 import Benchmark from "benchmark";
-import { format } from "../dist/index.mjs";
+import * as StdFormat from "../dist/sbrockma-std-format/dist/index.mjs";
+import * as BraceFormat from "../dist/tspro-brace-format/dist/index.mjs";
 
 const tasks = [
     {
@@ -19,17 +20,22 @@ const tasks = [
     },
 ];
 
-const suite = new Benchmark.Suite();
+function runTest(libName, lib) {
+    const suite = new Benchmark.Suite();
 
-tasks.forEach(d => {
-    suite.add(d.name, () => format(d.template, d.data));
-});
+    tasks.forEach(d => {
+        suite.add(libName + ": " + d.name, () => lib.format(d.template, d.data));
+    });
 
-suite
-    .on("cycle", (event) => {
-        console.log(String(event.target));
-    })
-    .on("complete", function () {
-        console.log("Fastest is " + this.filter("fastest").map("name"));
-    })
-    .run({ async: true });
+    suite
+        .on("cycle", (event) => {
+            console.log(String(event.target));
+        })
+        .on("complete", function () {
+            console.log("Fastest is " + this.filter("fastest").map("name"));
+        })
+        .run({ async: true });
+}
+
+runTest("StdFormat", StdFormat);
+runTest("BraceFormat", BraceFormat);
