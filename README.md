@@ -48,7 +48,7 @@ Use the standalone IIFE bundle via unpkg CDN.
 
 Work with BraceFormat:
 ```html
-<script src="https://unpkg.com/@tspro/brace-format@4.0.0/dist/index.global.js"></script>
+<script src="https://unpkg.com/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
 
 <script>
     const { format } = window.BraceFormat;
