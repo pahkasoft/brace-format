@@ -1,8 +1,10 @@
 # Changelog
 
 ## [4.0.0] - 2025-10-??
-## BREAKING
-- Made @tspro/brace-format and @sbrockma/std-format equal variants, published together.
+### Major Update
+From version `4.0.0` on both `@tspro/brace-format` and `@sbrockma/std-format`
+are equal libraries published together, only difference in addition
+to pkg name is the library name `BraceFormat` and `StdFormat`.
 
 ## [3.1.2] - 2025-09-04
 ### Changed
