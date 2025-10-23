@@ -16,9 +16,6 @@ execSync("npx rimraf ./dist", { stdio: "inherit" });
 execSync("npx rimraf ./packed", { stdio: "inherit" });
 fs.mkdirSync(packedDir, { recursive: true });
 
-// Load package template
-const templateContent = fs.readFileSync(rootPkgPath, "utf8");
-
 for (const [dirName, pkgName, libName] of variants) {
     const bundlePath = path.resolve("./dist", dirName);
     const bundleDistPath = path.resolve("./dist", dirName, "dist");
@@ -41,8 +38,13 @@ for (const [dirName, pkgName, libName] of variants) {
         }
 
         // Write variant package.json
-        const pkgContent = templateContent.replace(/replace_package_name/g, pkgName);
-        fs.writeFileSync(bundlePkgPath, pkgContent);
+        const pkg = JSON.parse(fs.readFileSync(rootPkgPath, "utf8"));
+        pkg.name = pkgName;
+        delete pkg.devDependencies;
+        delete pkg.scripts;
+        delete pkg.watch;
+        delete pkg.browserslist;
+        fs.writeFileSync(bundlePkgPath, JSON.stringify(pkg, null, 2));
 
         // Create npm pack tarball
         const tarballName = execSync("npm pack --quiet", {
