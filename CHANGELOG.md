@@ -1,5 +1,4 @@
 # Changelog
-
 ## [4.0.0] - 2025-10-23
 ### Possibly Breaking
 Note! `@tspro/brace-format` and `@sbrockma/std-format` are now exactly the
