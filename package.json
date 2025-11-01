@@ -2,6 +2,10 @@
     "name": "@tspro/brace-format",
     "version": "4.0.1",
     "author": "PahkaSoft",
+    "private": false,
+    "license": "MIT",
+    "description": "A TS/JS library for powerful string formatting.",
+    "homepage": "https://pahkasoft.github.io/brace-format",
     "repository": {
         "type": "git",
         "url": "https://github.com/pahkasoft/brace-format.git"
@@ -9,9 +13,6 @@
     "bugs": {
         "url": "https://github.com/pahkasoft/brace-format/issues"
     },
-    "private": false,
-    "license": "MIT",
-    "description": "A TS/JS library for powerful string formatting.",
     "files": [
         "./dist/index.d.ts",
         "./dist/index.d.mts",
@@ -27,6 +28,7 @@
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "unpkg": "./dist/index.global.js",
+    "jsdelivr": "./dist/index.global.js",
     "exports": {
         ".": {
             "browser": {
