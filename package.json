@@ -81,8 +81,7 @@
         }
     },
     "scripts": {
-        "build": "tsup",
-        "watch": "tsup --watch",
+        "build": "node ./scripts/build-variants.mjs",
         "test": "karma start",
         "docs": "typedoc",
         "benchmark": "npm run build && node benchmarks/benchmark.mjs"
