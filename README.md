@@ -44,11 +44,12 @@ StrFmt.format("...");
 ```
 
 ### Browser Script
-Use the standalone IIFE bundle via unpkg CDN.
+Use the standalone IIFE bundle via `unpkg` or `jsdelivr` cdn.
 
 Work with BraceFormat:
 ```html
 <script src="https://unpkg.com/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
 
 <script>
     const { format } = window.BraceFormat;
