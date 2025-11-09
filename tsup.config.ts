@@ -22,9 +22,8 @@ console.log("tsup: DIST_PATH = " + DIST_PATH);
 const ConfigEntries: { entry: Record<string, string>, format: Format }[] = [
     { entry: { 'index': 'src/index.ts' }, format: 'esm' },
     { entry: { 'index': 'src/index.ts' }, format: 'cjs' },
-    { entry: { 'index.global': 'src/index.es5.ts' }, format: 'iife' },
-    { entry: { 'index.es5.iife': 'src/index.es5.ts' }, format: 'iife' },
-    { entry: { 'index.es5.polyfilled.iife': 'src/index.es5.polyfilled.ts' }, format: 'iife' }
+    { entry: { 'index.global': 'src/index.ts' }, format: 'iife' },
+    { entry: { 'index.polyfilled.global': 'src/index.polyfilled.ts' }, format: 'iife' }
 ];
 
 const TsupConfig: Options[] = ConfigEntries.map((cfg, cfgId) => {
@@ -32,7 +31,7 @@ const TsupConfig: Options[] = ConfigEntries.map((cfg, cfgId) => {
     return {
         entry: cfg.entry,
         outDir: DIST_PATH,
-        target: isIIFE ? 'es5' : 'es2015',
+        target: 'es5',
         format: [cfg.format],
         dts: cfg.format === 'cjs',
         globalName: isIIFE ? LIB_NAME : undefined,
