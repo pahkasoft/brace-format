@@ -1,6 +1,7 @@
 // tsup.config.ts
 import { defineConfig, Format, Options } from 'tsup'
 import pkg from './package.json' assert { type: 'json' }
+import { babelEsbuildPlugin } from "./scripts/esbuild-babel-plugin";
 
 const LIB_NAME = process.env.LIB_NAME;
 
@@ -19,7 +20,7 @@ if (!DIST_PATH) {
 console.log("tsup: LIB_NAME  = " + LIB_NAME);
 console.log("tsup: DIST_PATH = " + DIST_PATH);
 
-const ConfigEntries: { entry: Record<string, string>, format: Format }[] = [
+const ConfigEntries: { entry: Record<string, string>, format: Format, babel?: true }[] = [
     // esm bundle
     { entry: { 'index': 'src/index.ts' }, format: 'esm' },
     // cjs bundle
@@ -29,7 +30,7 @@ const ConfigEntries: { entry: Record<string, string>, format: Format }[] = [
     // iife bundle
     { entry: { 'index.iife': 'src/index.ts' }, format: 'iife' },
     // polyfilled iife bundle
-    { entry: { 'index.polyfilled.iife': 'src/index.polyfilled.ts' }, format: 'iife' }
+    { entry: { 'index.polyfilled.iife': 'src/index.ts' }, format: 'iife', babel: true }
 ];
 
 const TsupConfig: Options[] = ConfigEntries.map((cfg, cfgId) => {
@@ -45,7 +46,7 @@ const TsupConfig: Options[] = ConfigEntries.map((cfg, cfgId) => {
         minify: isIIFE,
         clean: cfgId === 0,
         external: isIIFE ? undefined : ['jsbi'],
-        noExternal: isIIFE ? ['jsbi'] : undefined,
+        noExternal: cfg.babel ? ['jsbi', 'core-js', 'regenerator-runtime'] : isIIFE ? ['jsbi'] : undefined,
         banner: {
             js: `/* ${LIB_NAME} v${pkg.version} (${cfg.format}) | (c) 2025 PahkaSoft | MIT License | Includes JSBI (Apache License 2.0) */`
         },
@@ -53,6 +54,7 @@ const TsupConfig: Options[] = ConfigEntries.map((cfg, cfgId) => {
             __LIB_INFO__: JSON.stringify(`${LIB_NAME} v${pkg.version} (${cfg.format})`)
         },
         outExtension: isIIFE ? (() => ({ js: '.js' })) : undefined,
+        esbuildPlugins: cfg.babel ? [babelEsbuildPlugin()] : undefined,
     }
 });
 

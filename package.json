@@ -56,6 +56,9 @@
         "jsbi": "^4.3.2"
     },
     "devDependencies": {
+        "@babel/core": "^7.28.5",
+        "@babel/preset-env": "^7.28.5",
+        "@babel/preset-typescript": "^7.28.5",
         "@swc/core": "^1.13.5",
         "@types/jasmine": "^5.1.12",
         "benchmark": "^2.1.4",
