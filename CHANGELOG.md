@@ -1,4 +1,8 @@
 # Changelog
+## [4.1.0] - 2025-11-??
+### Added
+- Polyfilled iife bundle.
+
 ## [4.0.1] - 2025-10-24
 ### Changed
 - Support older `StdFormat` but focus is on `BraceFormat`. 
