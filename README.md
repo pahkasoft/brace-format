@@ -10,8 +10,7 @@ BraceFormat is a TS/JS library for powerful string formatting, inspired by
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
 Note! Version 4 made `BraceFormat` and it's previous deprecated version 
-`StdFormat` the same package, only difference being global name when using
-iife browser bundle (`window.BraceFormat` vs. `window.StdFormat`).
+`StdFormat` the same package. See section [Working With StdFormat](#working-with-stdformat).
 
 ## Project Status
 This project is now in maintenance. I will fix bugs and add features on request.
@@ -46,7 +45,6 @@ StrFmt.format("...");
 ### Browser Script
 Use the standalone IIFE bundle via `unpkg` or `jsdelivr` cdn.
 
-Work with BraceFormat:
 ```html
 <script src="https://unpkg.com/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
@@ -56,6 +54,16 @@ Work with BraceFormat:
     var str = format("{}, {}!", "Hello", "world");
 </script>
 ```
+
+### Working With StdFormat
+
+This document is written for `BraceFormat`, but since `StdFormat` exactly the same package, to use it make following changes everywhere:
+
+|   Replacement   |     BraceFormat      |       StdFormat        |
+|-----------------|----------------------|------------------------|
+| Pkg name        | `@tspro/BraceFormat` | `@sbrockma/std-format` |
+| Global name     | `BraceFormat`        | `StdFormat`            |
+| Window property | `window.BraceFormat` | `window.StdFormat`     |
 
 ## API
 
