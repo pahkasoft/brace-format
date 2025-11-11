@@ -28,9 +28,9 @@ const ConfigEntries: { entry: Record<string, string>, format: Format, useBabel?:
     // global bundle (kept for legacy support, renamed to iife).
     { entry: { 'index.global': 'src/index.ts' }, format: 'iife' },
     // iife bundle
-    { entry: { 'index.iife': 'src/index.ts' }, format: 'iife' },
+    { entry: { 'index.iife.min': 'src/index.ts' }, format: 'iife' },
     // polyfilled iife bundle
-    { entry: { 'index.polyfilled.iife': 'src/index.ts' }, format: 'iife', useBabel: true }
+    { entry: { 'index.polyfilled.iife.min': 'src/index.ts' }, format: 'iife', useBabel: true }
 ];
 
 const TsupConfig: Options[] = ConfigEntries.map((cfg, cfgId) => {

@@ -16,7 +16,7 @@ Note! Version 4 made `BraceFormat` and it's previous deprecated version
 This project is now in maintenance. I will fix bugs and add features on request.
 
 ## Install
-- Install BraceFormat: `npm i @tspro/brace-format`
+`npm i @tspro/brace-format`
 
 ## Usage
 
@@ -24,9 +24,9 @@ This project is now in maintenance. I will fix bugs and add features on request.
 
 ```js
 // Import default export
-import StrFmt from "@tspro/brace-format";
+import Fmt from "@tspro/brace-format";
 
-StrFmt.format("{}, {}!", "Hello", "world");
+Fmt.format("{}, {}!", "Hello", "world");
 
 // Or import named exports
 import { format, int, float, setLocale, FormatError } from "@tspro/brace-format";
@@ -37,22 +37,22 @@ format("{}, {}!", "Hello", "world");
 ### Require (CommonJS)
 
 ```js
-const StrFmt = require("@tspro/brace-format");
+const { format } = require("@tspro/brace-format");
 
-StrFmt.format("...");
+format("{}, {}!", "Hello", "world");
 ```
 
 ### Browser Script
 Use the standalone IIFE bundle via `unpkg` or `jsdelivr` cdn.
 
 ```html
-<!-- To load normal version, use one of following. -->
-<script src="https://unpkg.com/@tspro/brace-format@4.1.0/dist/index.iife.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.1.0/dist/index.iife.js"></script>
+<!-- To load non-polyfilled version, use one of following. -->
+<script src="https://unpkg.com/@tspro/brace-format@4.1.0/dist/index.iife.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.1.0/dist/index.iife.min.js"></script>
 
 <!-- To load polyfilled version, use one of following. -->
-<script src="https://unpkg.com/@tspro/brace-format@4.1.0/dist/index.polyfilled.iife.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.1.0/dist/index.polyfilled.iife.js"></script>
+<script src="https://unpkg.com/@tspro/brace-format@4.1.0/dist/index.polyfilled.iife.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.1.0/dist/index.polyfilled.iife.min.js"></script>
 
 <!-- Use normally. -->
 <script>

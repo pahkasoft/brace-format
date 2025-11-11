@@ -18,8 +18,8 @@
         "./dist/index.js",
         "./dist/index.mjs",
         "./dist/index.global.js",
-        "./dist/index.iife.js",
-        "./dist/index.polyfilled.iife.js",
+        "./dist/index.iife.min.js",
+        "./dist/index.polyfilled.iife.min.js",
         "package.json",
         "README.md",
         "CHANGELOG.md",
@@ -28,8 +28,8 @@
     "types": "./dist/index.d.ts",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
-    "unpkg": "./dist/index.iife.js",
-    "jsdelivr": "./dist/index.iife.js",
+    "unpkg": "./dist/index.iife.min.js",
+    "jsdelivr": "./dist/index.iife.min.js",
     "exports": {
         ".": {
             "browser": {
