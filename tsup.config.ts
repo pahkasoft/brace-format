@@ -38,7 +38,7 @@ const TsupConfig: Options[] = ConfigEntries.map((cfg, cfgId) => {
     return {
         entry: cfg.entry,
         outDir: DIST_PATH,
-        target: cfg.format === 'esm' ? 'es2015' : 'es5', // Let'skeep it how it was.
+        target: 'es5',
         format: [cfg.format],
         dts: cfg.format === 'cjs',
         globalName: isIIFE ? LIB_NAME : undefined,
