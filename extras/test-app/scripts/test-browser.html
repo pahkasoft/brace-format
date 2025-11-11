@@ -10,40 +10,67 @@
 <body>
     <h1>Browser Test</h1>
 
-    <!--
-	// Local
-    <script src="../node_modules/@tspro/brace-format/dist/index.global.js"></script>
-    <script src="../node_modules/@sbrockma/std-format/dist/index.global.js"></script>
-
-	// Unpkg cdn
-    <script src="https://unpkg.com/@tspro/brace-format@4.1.0/dist/index.iife.js"></script>
-    <script src="https://unpkg.com/@sbrockma/std-format@4.1.0/dist/index.iife.js"></script>
-
-    // Jsdelivr cdn
-    <script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.1.0/dist/index.iife.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@sbrockma/std-format@4.1.0/dist/index.iife.js"></script>
-    -->
-
-    <script src="../node_modules/@tspro/brace-format/dist/index.iife.js"></script>
-    <script src="../node_modules/@sbrockma/std-format/dist/index.iife.js"></script>
-
-    <div id="test"></div>
+    <div id="error">
+        <h2>Errors</h2>
+    </div>
+    <div id="test">
+        <h2>Tests</h2>
+    </div>
 
     <script>
-        var str = "";
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = src;
+                script.async = true;
+                script.onload = () => resolve(script);
+                script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+                document.head.appendChild(script);
+            });
+        }
+        function addError(err) {
+            document.getElementById("error").innerHTML = document.getElementById("error").innerHTML + "<p>" + err.toString() + "</p>";
+        }
 
-        function runTest(LibName) {
+        function runTest(src, LibName) {
             var format = LibName.format;
             var int = LibName.int;
+            var str = "<h3>Test</h3>" + src + "<br />";
             str += format("<p>{__LIB_INFO__}</p>");
             str += format("<p>Test: {}, {}</p>", "Hello World", int(99));
             str += format("<p>Test 'n': {:n}</p>", 9999999999);
+            document.getElementById("test").innerHTML = document.getElementById("test").innerHTML + "<p>" + str + "</p>";
         }
+    </script>
 
-        runTest(window.BraceFormat);
-        runTest(window.StdFormat);
+    <script>
+        var VERSION = "4.1.0";
 
-        document.getElementById("test").innerHTML = str;
+        var StdFormatSrcs = [
+            "https://unpkg.com/@sbrockma/std-format@" + VERSION + "/dist/index.global.js",
+            "https://unpkg.com/@sbrockma/std-format@" + VERSION + "/dist/index.iife.min.js",
+            "https://unpkg.com/@sbrockma/std-format@" + VERSION + "/dist/index.polyfilled.iife.min.js",
+            "../../../dist/sbrockma-std-format/dist/index.global.js",
+            "../../../dist/sbrockma-std-format/dist/index.iife.min.js",
+            "../../../dist/sbrockma-std-format/dist/index.polyfilled.iife.min.js"
+        ].forEach(src => {
+            loadScript(src)
+                .then(script => runTest(script.src, window.StdFormat))
+                .catch(err => addError(err));
+        });
+
+        var BraceFormatSrcs = [
+            "https://unpkg.com/@tspro/brace-format@" + VERSION + "/dist/index.global.js",
+            "https://unpkg.com/@tspro/brace-format@" + VERSION + "/dist/index.iife.min.js",
+            "https://unpkg.com/@tspro/brace-format@" + VERSION + "/dist/index.polyfilled.iife.min.js",
+            "../../../dist/tspro-brace-format/dist/index.global.js",
+            "../../../dist/tspro-brace-format/dist/index.iife.min.js",
+            "../../../dist/tspro-brace-format/dist/index.polyfilled.iife.min.js"
+        ].forEach(src => {
+            loadScript(src)
+                .then(script => runTest(script.src, window.BraceFormat))
+                .catch(err => addError(err));
+        });
     </script>
 </body>
 
