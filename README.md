@@ -66,11 +66,11 @@ Use the standalone IIFE bundle via `unpkg` or `jsdelivr` cdn.
 This document is written for `BraceFormat`, but since `StdFormat` exactly the same package,
 to use it make following changes everywhere:
 
-|   Replacement   |     BraceFormat      |       StdFormat        |
-|-----------------|----------------------|------------------------|
-| Pkg name        | `@tspro/BraceFormat` | `@sbrockma/std-format` |
-| Global name     | `BraceFormat`        | `StdFormat`            |
-| Window property | `window.BraceFormat` | `window.StdFormat`     |
+|   Replacement   |     BraceFormat       |       StdFormat        |
+|:---------------:|:---------------------:|:----------------------:|
+| Pkg name        | `@tspro/brace-format` | `@sbrockma/std-format` |
+| Global name     | `BraceFormat`         | `StdFormat`            |
+| Window property | `window.BraceFormat`  | `window.StdFormat`     |
 
 ## API
 
