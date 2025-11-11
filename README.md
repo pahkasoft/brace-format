@@ -46,18 +46,25 @@ StrFmt.format("...");
 Use the standalone IIFE bundle via `unpkg` or `jsdelivr` cdn.
 
 ```html
-<script src="https://unpkg.com/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
+<!-- To load normal version, use one of following. -->
+<script src="https://unpkg.com/@tspro/brace-format@4.1.0/dist/index.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.1.0/dist/index.iife.js"></script>
 
+<!-- To load polyfilled version, use one of following. -->
+<script src="https://unpkg.com/@tspro/brace-format@4.1.0/dist/index.polyfilled.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.1.0/dist/index.polyfilled.iife.js"></script>
+
+<!-- Use normally. -->
 <script>
-    const { format } = window.BraceFormat;
+    var format = window.BraceFormat.format;
     var str = format("{}, {}!", "Hello", "world");
 </script>
 ```
 
 ### Working With StdFormat
 
-This document is written for `BraceFormat`, but since `StdFormat` exactly the same package, to use it make following changes everywhere:
+This document is written for `BraceFormat`, but since `StdFormat` exactly the same package,
+to use it make following changes everywhere:
 
 |   Replacement   |     BraceFormat      |       StdFormat        |
 |-----------------|----------------------|------------------------|
