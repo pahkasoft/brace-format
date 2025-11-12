@@ -17,6 +17,8 @@
         <h2>Error</h2>
     </div>
 
+    <script src="../../node_modules/@tspro/format-test-script/index.js"></script>
+
     <script>
         function loadScript(src) {
             return new Promise((resolve, reject) => {
@@ -35,20 +37,13 @@
 
         function addError(src) {
             addInnerHtml("error", "<h3>Failed To Load</h3>");
-            addInnerHtml("error", "<p><b>SRC:</b> " + src + "</p>");
+            addInnerHtml("error", "<b>SRC:</b> " + src + "<br />");
         }
 
         function runTest(src, LibName) {
-            var format = LibName.format;
-            var int = LibName.int;
-            var float = LibName.float;
             addInnerHtml("success", "<h3>Test Success</h3>");
-            addInnerHtml("success", "<p><b>SRC:</b> " + src + "</p>");
-            addInnerHtml("success", format("<p>{__LIB_INFO__}</p>"));
-            addInnerHtml("success", format("<p>String Test: {:*^20s}</p>", "Hello World"));
-            addInnerHtml("success", format("<p>Int Test: {}</p>", int(99)));
-            addInnerHtml("success", format("<p>Float Test: {}</p>", float(99)));
-            addInnerHtml("success", format("<p>Locale Test: {:n}</p>", 9999999999));
+            addInnerHtml("success", "<b>SRC:</b> " + src + "<br />");
+            formatTest(LibName, str => addInnerHtml("success", str + "<br />"));
         }
     </script>
 
@@ -65,9 +60,9 @@
             "https://cdn.jsdelivr.net/npm/@sbrockma/std-format@" + VERSION + "/dist/index.iife.min.js",
             "https://cdn.jsdelivr.net/npm/@sbrockma/std-format@" + VERSION + "/dist/index.polyfilled.iife.min.js",
             // StdFormat local
-            "../../../dist/sbrockma-std-format/dist/index.global.js",
-            "../../../dist/sbrockma-std-format/dist/index.iife.min.js",
-            "../../../dist/sbrockma-std-format/dist/index.polyfilled.iife.min.js",
+            "../../dist/sbrockma-std-format/dist/index.global.js",
+            "../../dist/sbrockma-std-format/dist/index.iife.min.js",
+            "../../dist/sbrockma-std-format/dist/index.polyfilled.iife.min.js",
             // BraceFormat unpkg
             "https://unpkg.com/@tspro/brace-format@" + VERSION + "/dist/index.global.js",
             "https://unpkg.com/@tspro/brace-format@" + VERSION + "/dist/index.iife.min.js",
@@ -77,9 +72,9 @@
             "https://cdn.jsdelivr.net/npm/@tspro/brace-format@" + VERSION + "/dist/index.iife.min.js",
             "https://cdn.jsdelivr.net/npm/@tspro/brace-format@" + VERSION + "/dist/index.polyfilled.iife.min.js",
             // BraceFormat local
-            "../../../dist/tspro-brace-format/dist/index.global.js",
-            "../../../dist/tspro-brace-format/dist/index.iife.min.js",
-            "../../../dist/tspro-brace-format/dist/index.polyfilled.iife.min.js"
+            "../../dist/tspro-brace-format/dist/index.global.js",
+            "../../dist/tspro-brace-format/dist/index.iife.min.js",
+            "../../dist/tspro-brace-format/dist/index.polyfilled.iife.min.js"
         ].forEach(src => loadScript(src)
             .then(script => {
                 runTest(script.src, window.BraceFormat ?? window.StdFormat);

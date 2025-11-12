@@ -3,11 +3,11 @@ import "regenerator-runtime/runtime";
 import "bootstrap/dist/css/bootstrap.min.css"
 import React from "react";
 import { createRoot } from "react-dom/client";
-import RequireJsFormatTest from "./require-js";
-import ImportJsFormatTest from "./import-js";
-import ImportTsFormatTest from "./import-ts";
+import JsRequireTestComp from "./js-require";
+import JsImportTestComp from "./js-import";
+import TsImportTestComp from "./ts-import";
 
-class Test extends React.Component<{}, {}> {
+class TestApp extends React.Component<{}, {}> {
     constructor(props: {}) {
         super(props);
 
@@ -15,11 +15,11 @@ class Test extends React.Component<{}, {}> {
     }
 
     render() {
-        return <>
-            <RequireJsFormatTest />
-            <ImportJsFormatTest />
-            <ImportTsFormatTest />
-        </>
+        return <div className="container">
+            <JsRequireTestComp />
+            <JsImportTestComp />
+            <TsImportTestComp />
+        </div>
     }
 }
 
@@ -28,6 +28,6 @@ const root = createRoot(rootElement!);
 
 root.render(
     <React.StrictMode>
-        <Test />
+        <TestApp />
     </React.StrictMode>
 );

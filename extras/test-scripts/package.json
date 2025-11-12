@@ -1,0 +1,11 @@
+{
+    "name": "@tspro/test-scripts",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "node-cjs": "node ./node-cjs.js",
+        "node-esm": "node ./node-esm.mjs",
+        "browser": "start ./browser.html",
+        "all": "npm run node-cjs && npm run node-esm && npm run browser"
+    }
+}

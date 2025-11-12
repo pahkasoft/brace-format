@@ -40,6 +40,7 @@ for (const [dirName, pkgName, libName] of variants) {
         // Write variant package.json
         const pkg = JSON.parse(fs.readFileSync(rootPkgPath, "utf8"));
         pkg.name = pkgName;
+        pkg.private = false;
         delete pkg.devDependencies;
         delete pkg.scripts;
         delete pkg.watch;

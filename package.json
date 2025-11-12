@@ -1,8 +1,8 @@
 {
-    "name": "@tspro/brace-format",
+    "name": "this-will-be-replaced",
     "version": "4.1.0",
     "author": "PahkaSoft",
-    "private": false,
+    "private": true,
     "license": "MIT",
     "description": "A TS/JS library for powerful string formatting.",
     "homepage": "https://pahkasoft.github.io/brace-format",
@@ -74,7 +74,7 @@
         "karma-webpack": "^5.0.1",
         "npm-watch": "^0.13.0",
         "regenerator-runtime": "^0.14.1",
-        "rimraf": "^6.0.1",
+        "rimraf": "^6.1.0",
         "ts-loader": "^9.5.4",
         "tsup": "^8.5.0",
         "typedoc": "^0.28.14",
@@ -91,12 +91,19 @@
         }
     },
     "scripts": {
-        "build": "node ./scripts/build-variants.mjs",
+        "build": "node ./scripts/build-variants.mjs && npm install --workspaces",
         "test": "karma start",
         "docs": "typedoc",
-        "benchmark": "npm run build && node benchmarks/benchmark.mjs"
+        "benchmark": "npm run build && node benchmarks/benchmark.mjs",
+        "start:test-app": "npm run build && npm run start --workspace ./extras/test-app"
     },
     "browserslist": [
         "defaults"
+    ],
+    "workspaces": [
+        ".",
+        "./dist/sbrockma-std-format",
+        "./dist/tspro-brace-format",
+        "./extras/*"
     ]
 }
