@@ -16,7 +16,9 @@
     "files": [
         "./dist/index.d.ts",
         "./dist/index.js",
+        "./dist/index.js.map",
         "./dist/index.mjs",
+        "./dist/index.mjs.map",
         "./dist/index.global.js",
         "./dist/index.iife.min.js",
         "./dist/index.polyfilled.iife.min.js",
