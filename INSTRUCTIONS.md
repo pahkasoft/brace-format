@@ -20,8 +20,8 @@
     // Update version number
     npm version major|minor|patch
 
-    // Build packages
-    node ./scripts/build-variants.mjs
+    // Build variants
+    npm run build
 
     // Publish packages
     npm login
