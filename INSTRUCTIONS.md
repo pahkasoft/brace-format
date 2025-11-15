@@ -14,17 +14,23 @@
     node --prof-process ./isolate-*.log > processed.txt
 
 ## Publish
-    // Update changelog
+### Update Changelog
     git log --pretty="- %s"
 
-    // Update version number
-    npm version major|minor|patch
+### Update Version Numbers
+    // Change version in package.json: "x.y.z"
+    // Create git commit
+    git commit -a -m "vx.y.z"
+    // Create git tag
+    git tag vx.y.z
 
-    // Build variants
+### Build
     npm run build
 
-    // Publish packages
+### Test Package
+    // Build command creates and copies packages to packed/.
+
+### Publish
     npm login
     npm publish --access public ./packed/tspro-brace-format-x.y.z.tgz
     npm publish --access public ./packed/sbrockma-std-format-x.y.z.tgz
-
