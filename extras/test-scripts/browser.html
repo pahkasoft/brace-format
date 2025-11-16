@@ -27,23 +27,21 @@
     <script src="../../node_modules/@tspro/brace-format/dist/index.global.js"></script>
     <script src="../../node_modules/@sbrockma/std-format/dist/index.global.js"></script>
 
+    <script src="../../node_modules/@tspro/test-format-lib/index.js"></script>
+
     <div id="test"></div>
 
     <script>
-        var str = "";
-
-        function runTest(LibName) {
-            var format = LibName.format;
-            var int = LibName.int;
-            str += format("<p>{__LIB_INFO__}</p>");
-            str += format("<p>Test: {}, {}</p>", "Hello World", int(99));
-            str += format("<p>Test 'n': {:n}</p>", 9999999999);
+        function add(str) {
+            document.getElementById("test").innerHTML += str;
         }
 
-        runTest(window.BraceFormat);
-        runTest(window.StdFormat);
-
-        document.getElementById("test").innerHTML = str;
+        add("<p>");
+        testFormatLib(BraceFormat, str => add(str + "<br />"));
+        add("</p>");
+        add("<p>");
+        testFormatLib(StdFormat, str => add(str + "<br />"));
+        add("</p>");
     </script>
 </body>
 

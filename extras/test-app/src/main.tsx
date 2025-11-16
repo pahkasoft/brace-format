@@ -15,11 +15,11 @@ class Test extends React.Component<{}, {}> {
     }
 
     render() {
-        return <>
+        return <div className="container">
             <RequireJsFormatTest />
             <ImportJsFormatTest />
             <ImportTsFormatTest />
-        </>
+        </div>;
     }
 }
 

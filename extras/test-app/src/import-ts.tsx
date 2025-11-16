@@ -1,25 +1,19 @@
 import React from "react";
-import Fmt from "@tspro/brace-format";
-import Fmt2 from "@sbrockma/std-format";
+import BraceFormat from "@tspro/brace-format";
+import StdFormat from "@sbrockma/std-format";
+import testFormatLib from "@tspro/test-format-lib";
 
 const ImportTsFormatTest: React.FC<{}> = ({ }) => {
+    const brace: any[] = [];
+    testFormatLib(BraceFormat, (str: string) => brace.push(<>{str}<br /></>))
+    const std: any[] = [];
+    testFormatLib(StdFormat, (str: string) => std.push(<>{str}<br /></>))
+
     return (
         <div>
-            <h1>Import in TypeScript</h1>
-            <p>
-                {Fmt.format("{__LIB_INFO__}")}
-            </p>
-            <p>
-                {Fmt.format("Format Test: {} {}, {:d}", "Hello", "World", 5)}
-            </p>
-            <hr />
-            <p>
-                {Fmt2.format("{__LIB_INFO__}")}
-            </p>
-            <p>
-                {Fmt2.format("Format Test: {} {}, {:d}", "Hello", "World", 5)}
-            </p>
-            <hr />
+            <h1>TS Import</h1>
+            <p>{brace}</p>
+            <p>{std}</p>
         </div>
     );
 };

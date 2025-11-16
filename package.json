@@ -89,9 +89,9 @@
         "docs": "typedoc",
         "benchmark": "npm run build && node benchmarks/benchmark.mjs",
         "start:test-app": "npm run start --workspace extras/test-app",
-        "test-script:cjs": "node ./extras/test-scripts/test-node-cjs.js",
-        "test-script:esm": "node ./extras/test-scripts/test-node-esm.mjs",
-        "test-script:browser": "start ./extras/test-scripts/test-browser.html",
+        "test-script:cjs": "node ./extras/test-scripts/node-cjs.js",
+        "test-script:esm": "node ./extras/test-scripts/node-esm.mjs",
+        "test-script:browser": "start ./extras/test-scripts/browser.html",
         "test-script:all": "npm run test-script:cjs && npm run test-script:esm && npm run test-script:browser"
     },
     "browserslist": [
@@ -101,6 +101,7 @@
         ".",
         "dist/sbrockma-std-format",
         "dist/tspro-brace-format",
-        "extras/test-app"
+        "extras/test-app",
+        "extras/test-format-lib"
     ]
 }
