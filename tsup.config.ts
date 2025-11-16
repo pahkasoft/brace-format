@@ -1,5 +1,5 @@
 // tsup.config.ts
-import { defineConfig } from 'tsup'
+import { defineConfig, Format, Options } from 'tsup'
 import pkg from './package.json' assert { type: 'json' }
 
 const LIB_NAME = process.env.LIB_NAME;
@@ -19,61 +19,38 @@ if (!DIST_PATH) {
 console.log("tsup: LIB_NAME  = " + LIB_NAME);
 console.log("tsup: DIST_PATH = " + DIST_PATH);
 
-const bannerText = `/* ${LIB_NAME} v${pkg.version} | (c) 2025 PahkaSoft | Licensed under the MIT License | Includes JSBI (Apache License 2.0) */`;
+const configEntries: { entry: Record<string, string>, format: Format }[] = [
+    { entry: { 'index': 'src/index.ts' }, format: 'esm' },
+    { entry: { 'index': 'src/index.ts' }, format: 'cjs' },
+    { entry: { 'index.global': 'src/index.ts' }, format: 'iife' }
+];
 
-export default defineConfig([
-    // ESM bundle (no JSBI bundled)
-    {
-        entry: ['src/index.ts'],
+const tsupConfig: Options[] = configEntries.map((cfg, cfgId) => {
+    return {
+        clean: cfgId === 0,
+        entry: cfg.entry,
         outDir: DIST_PATH,
-        target: 'es2015',
-        format: ['esm'],
-        dts: false,
-        sourcemap: true,
-        clean: true,
-        external: ['jsbi'],
+        target: cfg.format === 'esm' ? 'es2015' : 'es5',
+        format: cfg.format,
+        globalName: cfg.format === 'iife' ? LIB_NAME : undefined,
+        dts: cfg.format === 'cjs',
+        minify: cfg.format === 'iife',
+        sourcemap: cfg.format !== 'iife',
+        external: cfg.format === 'iife' ? [] : ['jsbi'],
+        noExternal: cfg.format === 'iife' ? ['jsbi'] : [],
         banner: {
-            js: bannerText
+            js: `/* ${LIB_NAME} v${pkg.version} | (c) 2025 PahkaSoft | MIT License | Includes JSBI (Apache License 2.0) */`
         },
         define: {
-            __LIB_INFO__: JSON.stringify(`${LIB_NAME} v${pkg.version} (esm)`)
+            __LIB_INFO__: JSON.stringify(`${LIB_NAME} v${pkg.version} (${cfg.format})`)
         },
-    },
-
-    // CJS bundle (no JSBI bundled)
-    {
-        entry: ['src/index.ts'],
-        outDir: DIST_PATH,
-        target: 'es5',
-        format: ['cjs'],
-        dts: true,
-        sourcemap: true,
-        clean: false, // Don't wipe dist from the previous build
-        external: ['jsbi'],
-        banner: {
-            js: bannerText
+        outExtension({ format }) {
+            if (format === 'esm') return { js: ".mjs" };
+            if (format === 'cjs') return { js: ".js" };
+            if (format === 'iife') return { js: ".js" };
+            return { js: '.js' }
         },
-        define: {
-            __LIB_INFO__: JSON.stringify(`${LIB_NAME}t v${pkg.version} (cjs)`)
-        },
-    },
-
-    // IIFE bundle (includes JSBI)
-    {
-        entry: ['src/index.ts'],
-        outDir: DIST_PATH,
-        target: 'es5',
-        format: ['iife'],
-        globalName: LIB_NAME,
-        sourcemap: true,
-        minify: true,
-        clean: false, // Don't wipe dist from the previous build
-        banner: {
-            js: bannerText
-        },
-        define: {
-            __LIB_INFO__: JSON.stringify(`${LIB_NAME} v${pkg.version} (iife)`),
-        },
-        noExternal: ['jsbi'], // Bundle jsbi
     }
-]);
+});
+
+export default defineConfig(tsupConfig);
