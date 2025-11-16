@@ -87,7 +87,6 @@
         "build": "node ./scripts/build-variants.mjs && npm install --workspaces",
         "test": "karma start",
         "docs": "typedoc",
-        "benchmark": "npm run build && node benchmarks/benchmark.mjs",
         "start:test-app": "npm run start --workspace extras/test-app",
         "test-script:cjs": "node ./extras/test-scripts/node-cjs.js",
         "test-script:esm": "node ./extras/test-scripts/node-esm.mjs",

@@ -6,3 +6,4 @@ coverage/
 .vscode/
 package-lock.json
 *.log
+benchmarks/processed.txt
