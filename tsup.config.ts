@@ -28,7 +28,7 @@ export default defineConfig([
         outDir: DIST_PATH,
         target: 'es2015',
         format: ['esm'],
-        dts: true,
+        dts: false,
         sourcemap: true,
         clean: true,
         external: ['jsbi'],

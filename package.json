@@ -15,9 +15,10 @@
     },
     "files": [
         "./dist/index.d.ts",
-        "./dist/index.d.mts",
         "./dist/index.js",
+        "./dist/index.js.map",
         "./dist/index.mjs",
+        "./dist/index.mjs.map",
         "./dist/index.global.js",
         "package.json",
         "README.md",
@@ -37,7 +38,7 @@
                     "default": "./dist/index.js"
                 },
                 "import": {
-                    "types": "./dist/index.d.mts",
+                    "types": "./dist/index.d.ts",
                     "default": "./dist/index.mjs"
                 }
             },
@@ -46,7 +47,7 @@
                 "default": "./dist/index.js"
             },
             "import": {
-                "types": "./dist/index.d.mts",
+                "types": "./dist/index.d.ts",
                 "default": "./dist/index.mjs"
             }
         }
