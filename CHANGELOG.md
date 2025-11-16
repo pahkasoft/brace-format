@@ -1,4 +1,12 @@
 # Changelog
+## [4.0.2] - 2025-11-??
+### Chenged
+- Create monorepo.
+- Use .d.ts instead of .d.mts for esm.
+
+## Fixed
+- LICENSE and map files were missing from bundles.
+
 ## [4.0.1] - 2025-10-24
 ### Changed
 - Support older `StdFormat` but focus is on `BraceFormat`. 
