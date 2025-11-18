@@ -1,5 +1,5 @@
 # Changelog
-## [4.0.2] - 2025-11-??
+## [4.0.2] - 2025-11-18
 ### Chenged
 - Create monorepo.
 - Use .d.ts instead of .d.mts for esm.

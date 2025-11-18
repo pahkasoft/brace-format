@@ -9,9 +9,15 @@ BraceFormat is a TS/JS library for powerful string formatting, inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
-Note! Version 4 made `BraceFormat` and it's previous deprecated version 
-`StdFormat` the same package, only difference being global name when using
-iife browser bundle (`window.BraceFormat` vs. `window.StdFormat`).
+## Variants
+`BraceFormat` and it's previous deprecated version `StdFormat` are now
+the same package. Use either one, here are the differences.
+
+|                   | Brace Format          | Std Format               |
+|-------------------|-----------------------|--------------------------|
+| Package           | `@tspro/brace-format` | `@sbrockma/brace-format` |
+| Global name       | `BraceFormat`         | `StdFormat`              |
+| `window`-property | `window.BraceFormat`  | `window.StdFormat`       |
 
 ## Project Status
 This project is now in maintenance. I will fix bugs and add features on request.
@@ -46,10 +52,9 @@ StrFmt.format("...");
 ### Browser Script
 Use the standalone IIFE bundle via `unpkg` or `jsdelivr` cdn.
 
-Work with BraceFormat:
 ```html
-<script src="https://unpkg.com/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.0.1/dist/index.global.js"></script>
+<script src="https://unpkg.com/@tspro/brace-format@4.0.2/dist/index.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.0.2/dist/index.global.js"></script>
 
 <script>
     const { format } = window.BraceFormat;
