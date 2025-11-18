@@ -15,7 +15,7 @@ the same package. Use either one, here are the differences.
 
 |                   | Brace Format          | Std Format               |
 |-------------------|-----------------------|--------------------------|
-| Package           | `@tspro/brace-format` | `@sbrockma/brace-format` |
+| Package           | `@tspro/brace-format` | `@sbrockma/std-format`   |
 | Global name       | `BraceFormat`         | `StdFormat`              |
 | `window`-property | `window.BraceFormat`  | `window.StdFormat`       |
 
