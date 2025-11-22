@@ -32,17 +32,37 @@ const tsupConfig: Options[] = configEntries.map((cfg, cfgId) => {
         outDir: DIST_PATH,
         target: cfg.format === 'esm' ? 'es2015' : 'es5',
         format: cfg.format,
-        globalName: cfg.format === 'iife' ? LIB_NAME : undefined,
+        globalName: cfg.format === 'iife' ? "StdFormat" : undefined,
         dts: cfg.format === 'cjs',
         minify: cfg.format === 'iife',
         sourcemap: cfg.format !== 'iife',
         external: cfg.format === 'iife' ? [] : ['jsbi'],
         noExternal: cfg.format === 'iife' ? ['jsbi'] : [],
         banner: {
-            js: `/* ${LIB_NAME} v${pkg.version} | (c) 2025 PahkaSoft | MIT License | Includes JSBI (Apache License 2.0) */`
+            js: `/* StdFormat v${pkg.version} | (c) 2025 PahkaSoft | MIT License | Includes JSBI (Apache License 2.0) */`
         },
+        footer: LIB_NAME === "BraceFormat" ? {
+            js: `
+(function () {
+  // The primary IIFE gives you:
+  //   window.StdFormat
+  //   StdFormat   (because globalName is used)
+
+  // Extra window alias:
+  if (typeof window !== "undefined") {
+    window.BraceFormat = window.StdFormat;
+  }
+
+  // Extra bare global alias:
+  try {
+    // Non-window global (works in browsers and workers)
+    globalThis.BraceFormat = globalThis.StdFormat;
+  } catch {}
+})();
+`,
+        } : undefined,
         define: {
-            __LIB_INFO__: JSON.stringify(`${LIB_NAME} v${pkg.version} (${cfg.format})`)
+            __LIB_INFO__: JSON.stringify(`StdFormat v${pkg.version} (${cfg.format})`)
         },
         outExtension({ format }) {
             if (format === 'esm') return { js: ".mjs" };
