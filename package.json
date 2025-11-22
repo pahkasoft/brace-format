@@ -5,13 +5,13 @@
     "private": false,
     "license": "MIT",
     "description": "A TS/JS library for powerful string formatting.",
-    "homepage": "https://pahkasoft.github.io/brace-format",
+    "homepage": "https://github.com/pahkasoft/std-format#readme",
     "repository": {
         "type": "git",
-        "url": "https://github.com/pahkasoft/brace-format.git"
+        "url": "https://github.com/pahkasoft/std-format.git"
     },
     "bugs": {
-        "url": "https://github.com/pahkasoft/brace-format/issues"
+        "url": "https://github.com/pahkasoft/std-format/issues"
     },
     "files": [
         "./dist/index.d.ts",
