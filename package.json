@@ -98,6 +98,7 @@
     ],
     "workspaces": [
         ".",
+        "dist/std-format",
         "dist/sbrockma-std-format",
         "dist/tspro-brace-format",
         "extras/test-app",
