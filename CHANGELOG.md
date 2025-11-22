@@ -1,6 +1,11 @@
 # Changelog
+## [4.1.0] - 2025-11-??
+### Changed
+- Rebrand as `StdFormat` and unscoped `std-format` package.
+- Keep legacy support for other variants.
+
 ## [4.0.2] - 2025-11-18
-### Chenged
+### Changed
 - Create monorepo.
 - Use .d.ts instead of .d.mts for esm.
 
