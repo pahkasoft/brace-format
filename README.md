@@ -1,29 +1,32 @@
-# BraceFormat - A Powerfull TS/JS String Formatter
+# StdFormat - A Powerfull TS/JS String Formatter
 
 [Homepage](https://pahkasoft.github.io/brace-format) |
 [Repository](https://github.com/pahkasoft/brace-format) | 
-[Package](https://www.npmjs.com/package/@tspro/brace-format)
+[Package](https://www.npmjs.com/package/std-format)
 
 ## About
-BraceFormat is a TS/JS library for powerful string formatting, inspired by
+StdFormat is a TS/JS library for powerful string formatting, inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
 ## Variants
-`BraceFormat` and it's previous deprecated version `StdFormat` are now
-the same package. Use either one, here are the differences.
+There have been few different packages of this project along the line.
+Later I decided to make them all equal build variants. Use any one,
+here is table of the differences.
 
-|                   | Brace Format          | Std Format               |
-|-------------------|-----------------------|--------------------------|
-| Package           | `@tspro/brace-format` | `@sbrockma/std-format`   |
-| Global name       | `BraceFormat`         | `StdFormat`              |
-| `window`-property | `window.BraceFormat`  | `window.StdFormat`       |
+|                | StdFormat          | StdFormat (scoped)       | BraceFormat           |
+|----------------|--------------------|--------------------------|-----------------------|
+| npm package    | `std-format`       | `@sbrockma/std-format`   | `@tspro/brace-format` |
+| browser global | `StdFormat`        | `StdFormat`              | `BraceFormat`         |
+| browser alt.   | `window.StdFormat` | `window.StdFormat`       | `window.BraceFormat`  |
+
+This document is written for the `std-format` package.
 
 ## Project Status
 This project is now in maintenance. I will fix bugs and add features on request.
 
 ## Install
-- Install BraceFormat: `npm i @tspro/brace-format`
+`npm i std-format`
 
 ## Usage
 
@@ -31,12 +34,12 @@ This project is now in maintenance. I will fix bugs and add features on request.
 
 ```js
 // Import default export
-import StrFmt from "@tspro/brace-format";
+import StdFormat from "std-format";
 
-StrFmt.format("{}, {}!", "Hello", "world");
+StdFormat.format("{}, {}!", "Hello", "world");
 
 // Or import named exports
-import { format, int, float, setLocale, FormatError } from "@tspro/brace-format";
+import { format, int, float, setLocale, FormatError } from "std-format";
 
 format("{}, {}!", "Hello", "world");
 ```
@@ -44,20 +47,20 @@ format("{}, {}!", "Hello", "world");
 ### Require (CommonJS)
 
 ```js
-const StrFmt = require("@tspro/brace-format");
+const StdFormat = require("std-format");
 
-StrFmt.format("...");
+StdFormat.format("...");
 ```
 
 ### Browser Script
 Use the standalone IIFE bundle via `unpkg` or `jsdelivr` cdn.
 
 ```html
-<script src="https://unpkg.com/@tspro/brace-format@4.0.2/dist/index.global.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tspro/brace-format@4.0.2/dist/index.global.js"></script>
+<script src="https://unpkg.com/std-format@4.0.2/dist/index.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/std-format@4.0.2/dist/index.global.js"></script>
 
 <script>
-    const { format } = window.BraceFormat;
+    const { format } = window.StdFormat;
     var str = format("{}, {}!", "Hello", "world");
 </script>
 ```
@@ -120,7 +123,7 @@ catch(e) {
 ```
 
 ## Format Specification
-BraceFormat/StdFromat uses replacement fields like {}, {0}, {name}, with support for detailed format specs.
+StdFromat uses replacement fields like {}, {0}, {name}, with support for detailed format specs.
 
 ### Replacement Field Structure
 
