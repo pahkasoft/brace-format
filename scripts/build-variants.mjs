@@ -3,8 +3,9 @@ import path from "path";
 import { execSync } from "child_process";
 
 const variants = [
-    ["tspro-brace-format", "@tspro/brace-format", "BraceFormat"],
-    ["sbrockma-std-format", "@sbrockma/std-format", "StdFormat"]
+    ["std-format", "std-format", "StdFormat"],
+    ["sbrockma-std-format", "@sbrockma/std-format", "StdFormat"],
+    ["tspro-brace-format", "@tspro/brace-format", "BraceFormat"]
 ];
 
 const filesToCopy = ["README.md", "CHANGELOG.md", "LICENSE"];
