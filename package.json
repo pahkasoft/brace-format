@@ -4,7 +4,7 @@
     "author": "PahkaSoft",
     "private": false,
     "license": "MIT",
-    "description": "A TS/JS library for powerful string formatting.",
+    "description": "A TypeScript/JavaScript library for powerful string formatting using { } notation.",
     "homepage": "https://github.com/pahkasoft/std-format#readme",
     "repository": {
         "type": "git",
