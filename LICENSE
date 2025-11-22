@@ -5,7 +5,7 @@ This project is licensed under the MIT License.
 
 MIT License
 
-for the project BraceFormat
+for the project StdFormat
 
 Copyright (c) 2025 PahkaSoft
  
@@ -34,7 +34,7 @@ This project includes third-party code:
 
 - JSBI (https://github.com/GoogleChromeLabs/jsbi), licensed under the Apache License 2.0
 
-The following license applies only to the bundled JSBI library, not to BraceFormat itself.
+The following license applies only to the bundled JSBI library, not to StdFormat itself.
 
 ---
 
