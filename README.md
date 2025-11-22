@@ -1,10 +1,11 @@
-# StdFormat - A Powerfull TS/JS String Formatter
+# StdFormat - A Powerfull TypeScript/JavaScript String Formatter
 
 [GitHub Repo](https://github.com/pahkasoft/std-format) | 
 [NPM Pkg](https://www.npmjs.com/package/std-format)
 
 ## About
-StdFormat is a TS/JS library for powerful string formatting, inspired by
+StdFormat is a TypeScript/JavaScript library for powerful string formatting
+using { } notation, inspired by
 [C++20 format](https://en.cppreference.com/w/cpp/utility/format/spec) and
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
