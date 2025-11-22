@@ -1,8 +1,7 @@
 # StdFormat - A Powerfull TS/JS String Formatter
 
-[Homepage](https://pahkasoft.github.io/brace-format) |
-[Repository](https://github.com/pahkasoft/brace-format) | 
-[Package](https://www.npmjs.com/package/std-format)
+[GitHub Repo](https://github.com/pahkasoft/std-format) | 
+[NPM Pkg](https://www.npmjs.com/package/std-format)
 
 ## About
 StdFormat is a TS/JS library for powerful string formatting, inspired by
@@ -10,17 +9,20 @@ StdFormat is a TS/JS library for powerful string formatting, inspired by
 [Python format](https://docs.python.org/3/library/string.html#formatspec).
 
 ## Variants
-There have been few different packages of this project along the line.
-Later I decided to make them all equal build variants. Use any one,
-here is table of the differences.
+There have been few separate npm packages of this project along the line.
+The recommended and main package is:
+- `std-format` 👍 Use this!
 
-|                | StdFormat          | StdFormat (scoped)       | BraceFormat           |
-|----------------|--------------------|--------------------------|-----------------------|
-| npm package    | `std-format`       | `@sbrockma/std-format`   | `@tspro/brace-format` |
-| browser global | `StdFormat`        | `StdFormat`              | `BraceFormat`         |
-| browser alt.   | `window.StdFormat` | `window.StdFormat`       | `window.BraceFormat`  |
+Other two are kept up to date for legacy support, in case someone is using
+them:
+- `@sbrockma/std-format`
+- `@tspro/brace-format`
 
-This document is written for the `std-format` package.
+All three packages are equal and work what is written in this documentation.
+
+> IIFE Note: Global name `StdFormat` is declared by all three variants.
+> `@tspro/brace-format` declares additional alias `BraceFormat` for legacy
+> support.
 
 ## Project Status
 This project is now in maintenance. I will fix bugs and add features on request.
@@ -278,7 +280,7 @@ tested against specific Node.js or browser versions.
 ## Report a Bug
 Found a bug or unexpected behavior?
 
-[Please open a new issue.](https://github.com/pahkasoft/brace-format/issues)
+[Please open a new issue.](https://github.com/pahkasoft/std-format/issues)
 
 You can also suggest a feature or impovement.
 
